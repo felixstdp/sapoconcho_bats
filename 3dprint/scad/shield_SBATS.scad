@@ -3,14 +3,14 @@ $fn=12;
 difference(){
 shield_UNO();
 
-translate([2.54,10,0])rotate([0,0,90])pin20mil(3,1.5,3);
-translate([2.54,30,0])rotate([0,0,90])pin20mil(3,1.5,3);
-translate([2.54,40,0])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([2,10,0])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([2,30,0])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([2,40,0])rotate([0,0,90])pin20mil(3,1.5,3);
 
-translate([40,15+15.24,-1])pin20mil(8,1.5,10);
-translate([40,15,-1])pin20mil(8,1.5,10);
-translate([66,14,0])rotate([0,0,90])pin20mil(3,1.5,3);
-translate([66,24,0])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([43,15+15.24,-1])pin20mil(8,1.5,10);
+translate([43,15,-1])pin20mil(8,1.5,10);
+translate([66.5,14,0])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([66.5,24,0])rotate([0,0,90])pin20mil(3,1.5,3);
 
 
 }    
