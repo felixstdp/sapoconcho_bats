@@ -7,15 +7,15 @@ translate([2,10,0])rotate([0,0,90])pin20mil(3,1.5,3);
 translate([2,30,0])rotate([0,0,90])pin20mil(3,1.5,3);
 translate([2,40,0])rotate([0,0,90])pin20mil(3,1.5,3);
 
-translate([50,42,0])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([43,42,0])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([49,42,0])rotate([0,0,90])pin20mil(3,1.5,3);
 translate([55,42,0])rotate([0,0,90])pin20mil(3,1.5,3);
-translate([45,42,0])rotate([0,0,90])pin20mil(3,1.5,3);
-translate([50,34.5,0])rotate([0,0,90])pin20mil(1,1.5,3);
+translate([43,34.5,0])rotate([0,0,90])pin20mil(1,1.5,3);
+translate([49,34.5,0])rotate([0,0,90])pin20mil(1,1.5,3);
 translate([55,34.5,0])rotate([0,0,90])pin20mil(1,1.5,3);
-translate([45,34.5,0])rotate([0,0,90])pin20mil(1,1.5,3);
 
-translate([44,15+15.24,-1])pin20mil(8,1.5,10);
-translate([44,15,-1])pin20mil(8,1.5,10);
+translate([43,15+15.24,-1])pin20mil(8,1.5,10);
+translate([43,15,-1])pin20mil(8,1.5,10);
 translate([66.5,15,0])rotate([0,0,90])pin20mil(3,1.5,3);
 translate([66.5,25,0])rotate([0,0,90])pin20mil(3,1.5,3);
 
