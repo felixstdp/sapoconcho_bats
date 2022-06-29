@@ -1,6 +1,7 @@
 shield_UNO(1.5);
 
-module shield_UNO(h){
+module shield_UNO(h)
+{
 difference(){
 union(){
 cube([66.04,50.5+2.54,h]);
