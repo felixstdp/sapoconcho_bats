@@ -28,9 +28,9 @@ translate([28.7,42,-1])pin20mil(4,1.5,10);
 translate([28.7,42+2.54,-1])pin20mil(4,1.5,10);
 translate([28.7,42+5.08,-1])pin20mil(4,1.5,10);
 
-translate([8,45,-1])cylinder(d=1.5,h=5);
-translate([14.9,45,-1])cylinder(d=1.5,h=5);
-translate([19,45,-1])pin20mil(3,1.5,10);
+translate([9,44,-1])cylinder(d=1.5,h=5);
+translate([15.9,44,-1])cylinder(d=1.5,h=5);
+translate([21,41.5,-1])rotate([0,0,90])pin20mil(3,1.5,10);
 }    
 
 module shield_UNO(h){
