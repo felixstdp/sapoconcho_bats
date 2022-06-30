@@ -112,6 +112,7 @@ translate([32.75,2.54,-1])pin20mil(6,1.2,h+2);
 translate([50.5,2.54,-1])pin20mil(6,1.2,h+2);
 translate([18.56,50.5,-1])pin20mil(10,1.2,h+2);
 translate([45.48,50.5,-1])pin20mil(8,1.2,h+2);
+translate([66.04,53.04,-1])cylinder(d=4,h=5,$fn=4);
 }
 }
 
