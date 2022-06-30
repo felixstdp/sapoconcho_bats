@@ -5,9 +5,9 @@ difference(){
 shield_UNO(1.2);
 
 // conectores de alimentación e interruptor
-translate([2.54,5,-1])rotate([0,0,90])pin20mil(3,1.2,3);
+translate([2.54,5,-1])rotate([0,0,90])pin20mil(3,1.5,3);
 translate([2.54,28,-1])rotate([0,0,90])pin20mil(5,1.2,3);
-translate([2.54,43,-1])rotate([0,0,90])pin20mil(3,1.2,3);
+translate([2.54,43,-1])rotate([0,0,90])pin20mil(3,1.5,3);
 
 // LEDs semáforo
 translate([43.5,42,-1])rotate([0,0,90])pin20mil(3,1.2,3);
@@ -28,8 +28,8 @@ translate([39,15+15.24,-1])pin20mil(8,1.2,10);
 translate([39,15,-1])pin20mil(8,1.2,10);
 
 // conexión de motores y condensadores
-translate([66,16,-1])rotate([0,0,90])pin20mil(3,1.2,3);
-translate([66,26,-1])rotate([0,0,90])pin20mil(3,1.2,3);
+translate([66,16,-1])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([66,26,-1])rotate([0,0,90])pin20mil(3,1.5,3);
 translate([61,16,-1])rotate([0,0,90])pin20mil(3,1.2,3);
 translate([61,26,-1])rotate([0,0,90])pin20mil(3,1.2,3);
 
@@ -44,37 +44,37 @@ translate([28.7,42+2.54,-1])pin20mil(4,1.2,10);
 translate([28.7,42+5.08,-1])pin20mil(4,1.2,10);
 
 // buzzer
-translate([9,44,-1])cylinder(d=1.2,h=5);
-translate([15.9,44,-1])cylinder(d=1.2,h=5);
+translate([9,45,-1])cylinder(d=1.2,h=5);
+translate([15.9,45,-1])cylinder(d=1.2,h=5);
 translate([21,41.2,-1])rotate([0,0,90])pin20mil(3,1.2,10);
 
 // potenciómetro 1
 translate([9,34,-1])pin20mil(3,1.2,10);
 translate([11.24,31.45,-1])pin20mil(1,1.2,10);
-translate([9,26,-1])pin20mil(3,1.2,10);
+translate([9,26.5,-1])pin20mil(3,1.2,10);
 
 // potenciómetro 2
 translate([21,34,-1])pin20mil(3,1.2,10);
 translate([23.54,31.45,-1])pin20mil(1,1.2,10);
-translate([21,26,-1])pin20mil(3,1.2,10);
+translate([21,26.5,-1])pin20mil(3,1.2,10);
 
 // pulsador 1
-translate([5,14,-1])cylinder(d=1.2,h=5);
-translate([5,19,-1])cylinder(d=1.2,h=5);
-translate([17.5,14,-1])cylinder(d=1.2,h=5);
-translate([17.5,19,-1])cylinder(d=1.2,h=5);
+translate([6,13,-1])cylinder(d=1.2,h=5);
+translate([6,18,-1])cylinder(d=1.2,h=5);
+translate([18.5,13,-1])cylinder(d=1.2,h=5);
+translate([18.5,18,-1])cylinder(d=1.2,h=5);
 
 // pulsador 2
-translate([21,14,-1])cylinder(d=1.2,h=5);
-translate([21,19,-1])cylinder(d=1.2,h=5);
-translate([33.5,14,-1])cylinder(d=1.2,h=5);
-translate([33.5,19,-1])cylinder(d=1.2,h=5);
+translate([22,13,-1])cylinder(d=1.2,h=5);
+translate([22,18,-1])cylinder(d=1.2,h=5);
+translate([34.5,13,-1])cylinder(d=1.2,h=5);
+translate([34.5,18,-1])cylinder(d=1.2,h=5);
 
 // resistencias pulsadores
-translate([7,22,-1])cylinder(d=1.2,h=5);
-translate([15,22,-1])cylinder(d=1.2,h=5);
-translate([23,22,-1])cylinder(d=1.2,h=5);
-translate([31,22,-1])cylinder(d=1.2,h=5);
+translate([8,22.5,-1])cylinder(d=1.2,h=5);
+translate([16,22.5,-1])cylinder(d=1.2,h=5);
+translate([24,22.5,-1])cylinder(d=1.2,h=5);
+translate([32,22.5,-1])cylinder(d=1.2,h=5);
 
 // fusible motores
 translate([39,25,-1])cylinder(d=1.2,h=5);
@@ -85,11 +85,11 @@ translate([41.24,12.2,-1])cylinder(d=1.2,h=5);
 translate([41.24,5.2,-1])cylinder(d=1.2,h=5);
 
 // LDR
-translate([9,5,-1])cylinder(d=1.2,h=5);
-translate([9,8,-1])cylinder(d=1.2,h=5);
-translate([15.6,5,-1])cylinder(d=1.2,h=5);
-translate([15.6,8,-1])cylinder(d=1.2,h=5);
-translate([18,8,-1])pin20mil(3,1.2,10);
+translate([9,4,-1])cylinder(d=1.2,h=5);
+translate([9,7,-1])cylinder(d=1.2,h=5);
+translate([15.6,4,-1])cylinder(d=1.2,h=5);
+translate([15.6,7,-1])cylinder(d=1.2,h=5);
+translate([18,7,-1])pin20mil(3,1.2,10);
 
 // diodo
 translate([20,2.5,-1])cylinder(d=1.2,h=5);
