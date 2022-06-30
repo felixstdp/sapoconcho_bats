@@ -89,6 +89,7 @@ translate([9,5,-1])cylinder(d=1.5,h=5);
 translate([9,8,-1])cylinder(d=1.5,h=5);
 translate([15.6,5,-1])cylinder(d=1.5,h=5);
 translate([15.6,8,-1])cylinder(d=1.5,h=5);
+translate([18,8,-1])pin20mil(3,1.5,10);
 
 // diodo
 translate([20,2.5,-1])cylinder(d=1.5,h=5);
