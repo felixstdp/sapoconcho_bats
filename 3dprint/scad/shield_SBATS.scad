@@ -10,12 +10,12 @@ translate([2.54,28,-1])rotate([0,0,90])pin20mil(5,1.5,3);
 translate([2.54,43,-1])rotate([0,0,90])pin20mil(3,1.5,3);
 
 // LEDs semáforo
-translate([42,42,-1])rotate([0,0,90])pin20mil(3,1.5,3);
-translate([48,42,-1])rotate([0,0,90])pin20mil(3,1.5,3);
-translate([54,42,-1])rotate([0,0,90])pin20mil(3,1.5,3);
-translate([42,34.5,-1])pin20mil(1,1.5,3);
-translate([48,34.5,-1])pin20mil(1,1.5,3);
-translate([54,34.5,-1])pin20mil(1,1.5,3);
+translate([43.5,42,-1])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([49.5,42,-1])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([55.5,42,-1])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([43.5,34.5,-1])pin20mil(1,1.5,3);
+translate([49.5,34.5,-1])pin20mil(1,1.5,3);
+translate([55.5,34.5,-1])pin20mil(1,1.5,3);
 
 // neopixel THT
 translate([33,27,-1])rotate([0,0,90])pin20mil(4,1.5,3);
