@@ -1,4 +1,3 @@
-
 $fn=12;
 
 difference(){
@@ -15,10 +14,12 @@ translate([43,34.5,-1])rotate([0,0,90])pin20mil(1,1.5,3);
 translate([49,34.5,-1])rotate([0,0,90])pin20mil(1,1.5,3);
 translate([55,34.5,-1])rotate([0,0,90])pin20mil(1,1.5,3);
 
-translate([42,15+15.24,-1])pin20mil(8,1.5,10);
-translate([42,15,-1])pin20mil(8,1.5,10);
-translate([66,15,-1])rotate([0,0,90])pin20mil(3,1.5,3);
-translate([66,25,-1])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([37,15+15.24,-1])pin20mil(8,1.5,10);
+translate([37,15,-1])pin20mil(8,1.5,10);
+translate([66,16,-1])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([66,26,-1])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([60,16,-1])rotate([0,0,90])pin20mil(3,1.5,3);
+translate([60,26,-1])rotate([0,0,90])pin20mil(3,1.5,3);
 
 translate([50.5,6,-1])pin20mil(6,1.5,10);
 translate([50.5,6+2.54,-1])pin20mil(6,1.5,10);
@@ -31,6 +32,21 @@ translate([28.7,42+5.08,-1])pin20mil(4,1.5,10);
 translate([9,44,-1])cylinder(d=1.5,h=5);
 translate([15.9,44,-1])cylinder(d=1.5,h=5);
 translate([21,41.5,-1])rotate([0,0,90])pin20mil(3,1.5,10);
+
+translate([11,28,-1])rotate([0,0,90])pin20mil(3,1.5,10);
+translate([13.54,28,-1])rotate([0,0,90])pin20mil(3,1.5,10);
+translate([21,28,-1])rotate([0,0,90])pin20mil(3,1.5,10);
+
+translate([9,14,-1])cylinder(d=1.5,h=5);
+translate([9,18.5,-1])cylinder(d=1.5,h=5);
+translate([15.5,14,-1])cylinder(d=1.5,h=5);
+translate([15.5,18.5,-1])cylinder(d=1.5,h=5);
+
+translate([20,14,-1])cylinder(d=1.5,h=5);
+translate([20,18.5,-1])cylinder(d=1.5,h=5);
+translate([26.5,14,-1])cylinder(d=1.5,h=5);
+translate([26.5,18.5,-1])cylinder(d=1.5,h=5);
+
 }    
 
 module shield_UNO(h){
