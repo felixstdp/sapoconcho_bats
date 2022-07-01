@@ -57,7 +57,7 @@ translate([21,41.2,-1])rotate([0,0,90])pin20mil(3,1.2,10);
 // potenciómetro 1
 translate([9,34,-1])cylinder(d=1.2,h=5);
 translate([14.08,34,-1])cylinder(d=1.2,h=5);
-translate([11.24,31.45,-1])cylinder(d=1.2,h=5);
+translate([11.54,31.45,-1])cylinder(d=1.2,h=5);
 translate([9,26.5,-1])pin20mil(3,1.2,10);
 
 // potenciómetro 2
