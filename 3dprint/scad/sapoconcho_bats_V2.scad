@@ -14,16 +14,16 @@ translate([2.54,48.08,-1])cylinder(d=1.5,h=5);
 //// LEDs semáforo
 translate([-15,0,0])
 {
-translate([43.5,44.5,-1])rotate([0,0,90])pin20mil(2,1.2,3);
-translate([49.5,44.5,-1])rotate([0,0,90])pin20mil(2,1.2,3);
-translate([55.5,44.5,-1])rotate([0,0,90])pin20mil(2,1.2,3);
+translate([45,43.5,-1])rotate([0,0,90])pin20mil(2,1.2,3);
+translate([51,43.5,-1])rotate([0,0,90])pin20mil(2,1.2,3);
+translate([57,43.5,-1])rotate([0,0,90])pin20mil(2,1.2,3);
 }
-translate([39,35,-1])cylinder(d=1.2,h=5);
-translate([45.6,35,-1])cylinder(d=1.2,h=5);
-translate([39,37.5,-1])cylinder(d=1.2,h=5);
-translate([45.6,37.5,-1])cylinder(d=1.2,h=5);
-translate([39,40,-1])cylinder(d=1.2,h=5);
-translate([45.6,40,-1])cylinder(d=1.2,h=5);
+translate([39,34,-1])cylinder(d=1.2,h=5);
+translate([45.6,34,-1])cylinder(d=1.2,h=5);
+translate([39,36.54,-1])cylinder(d=1.2,h=5);
+translate([45.6,36.54,-1])cylinder(d=1.2,h=5);
+translate([39,39.08,-1])cylinder(d=1.2,h=5);
+translate([45.6,39.08,-1])cylinder(d=1.2,h=5);
 
 // neopixel THT
 translate([33,27,-1])rotate([0,0,90])pin20mil(4,1.2,3);
