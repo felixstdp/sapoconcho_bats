@@ -19,11 +19,11 @@ translate([51,43.5,-1])rotate([0,0,90])pin20mil(2,1.2,3);
 translate([57,43.5,-1])rotate([0,0,90])pin20mil(2,1.2,3);
 }
 translate([39,34,-1])cylinder(d=1.2,h=5);
-translate([45.6,34,-1])cylinder(d=1.2,h=5);
+translate([47.5,34,-1])cylinder(d=1.2,h=5);
 translate([39,36.54,-1])cylinder(d=1.2,h=5);
-translate([45.6,36.54,-1])cylinder(d=1.2,h=5);
+translate([47.5,36.54,-1])cylinder(d=1.2,h=5);
 translate([39,39.08,-1])cylinder(d=1.2,h=5);
-translate([45.6,39.08,-1])cylinder(d=1.2,h=5);
+translate([47.5,39.08,-1])cylinder(d=1.2,h=5);
 
 // neopixel THT
 translate([33,27,-1])rotate([0,0,90])pin20mil(4,1.2,3);
@@ -88,9 +88,9 @@ translate([35.5,18,-1])cylinder(d=1.2,h=5);
 
 // resistencias pulsadores
 translate([9,22.5,-1])cylinder(d=1.2,h=5);
-translate([17,22.5,-1])cylinder(d=1.2,h=5);
+translate([17.5,22.5,-1])cylinder(d=1.2,h=5);
 translate([25,22.5,-1])cylinder(d=1.2,h=5);
-translate([33,22.5,-1])cylinder(d=1.2,h=5);
+translate([33.5,22.5,-1])cylinder(d=1.2,h=5);
 
 // fusible motores
 translate([39,24.5,-1])cylinder(d=1.2,h=5);
