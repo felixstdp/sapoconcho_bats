@@ -1,0 +1,2032 @@
+====== Sapoconcho BATS ======
+
+<WRAP tip> Sapoconcho BATS es un proyecto nuevo para mezclar dos anteriores de Bricolabs:
+
+  * BATS -Bricolabs Arduino Training Shield- es una idea original de una placa escudo (shield) para Arduino UNO con muchos de los componentes que se utilizan en los cursos para el aprendizaje inicial de esta plataforma.
+  * Sapoconcho es un proyecto de robot de aprendizaje imprimible (printbot), versátil, sencillo y barato.
+
+</WRAP>
+
+Las ideas básicas que resultan de unir los dos proyectos son:
+
+  * Proyecto abierto y documentado.
+  * Aprender electrónica básica: componentes, montajes sencillos y soldadura.
+  * Aprender programación básica: programación física con variables, funciones y librerías.
+  * Iniciación a los robots móviles: montaje de chasis con formato tortuga, electrónica de control y sensores.
+
+Se trata de un proyecto de aprendizaje. No nos atrevemos a llamarlo proyecto educativo porque ninguno de los desarrolladores tenemos formación ni experiencia en pedagogía. Simplemente acumulamos la experiencia de unos cuantos años de talleres para quien quiera usar el proyecto de manera total y absolutamente libre. Tal y como está ordenado aquí o del modo que se quiera modificar.
+
+DISCLAIMER: este proyecto aún está en constante evolución, aunque llegando a su forma definitiva.
+
+{{:proyectos:sapoconcho:bats4_12.jpg|bats4_12.jpg}}
+
+====== Historia ======
+
+El proyecto BATS es una idea de placa escudo (shield) sobre Arduino UNO para aprender electrónica y programación básicas, así como soldadura. En esta misma wiki hay una entrada para su [[https://bricolabs.cc/wiki/proyectos/montaje_bats|montaje]] y una para su [[https://bricolabs.cc/wiki/proyectos/programacion_bats|programación]]. De esas dos entradas ha salido la base para este nuevo proyecto.
+
+El proyecto [[https://bricolabs.cc/wiki/proyectos/sapoconcho|Sapoconcho]] surgió en 2013 como una evolución de los talleres de la iniciativa KiiCS de los Museos Científicos para cambiar un producto comercial por uno DIY/DIWO. En 2020 se creó la [[https://bricolabs.cc/wiki/proyectos/montaje_sapoconcho_xl|versión XL]] que es la base del chasis que se usará en este remix.
+
+{{:proyectos:sapoconcho:sapoconcho_bats.jpg|sapoconcho_bats.jpg}}
+
+Con la evolución del modelo Sapoconcho XL, que monta un Arduino UNO y una shield con una placa de prototipado, surge la idea de cambiarla por una versión evolucionada de la shield BATS que incluya un controlador de motores.
+
+====== Pasos del proyecto ======
+
+La idea conjunta del proyecto seguirá una serie de pasos para el aprendizaje de los diferentes objetivos:
+
+  - [[https://bricolabs.cc/wiki/proyectos/sapoconcho_bats#montaje_de_la_shield_bats_v4|Montaje de la shield]] soldando los componentes.
+  - [[https://bricolabs.cc/wiki/proyectos/sapoconcho_bats#iniciacion_a_la_programacion_fisica_con_arduino|Iniciación a la programación]] física con Arduino.
+  - [[https://bricolabs.cc/wiki/proyectos/sapoconcho_bats#montaje_del_chasis|Montaje del chasis]] del robot móvil y pruebas de movimiento.
+  - [[https://bricolabs.cc/wiki/proyectos/sapoconcho_bats#programacion_de_sapoconcho|Programación avanzada]] para hacer autónomo el robot.
+
+====== Montaje de la shield BATS V4 ======
+
+===== Lista de componentes =====
+
+Partimos de una [[https://es.wikipedia.org/wiki/Circuito_impreso|PCB]] para montar una shield. La llamamos BATS versión 4.1 o BATS edición Sapoconcho. Está en fase de pruebas, pero no hemos encontrado ningún fallo así que es probable que sea definitiva.
+
+{{:proyectos:sapoconcho:bats4_1.jpg|bats4_1.jpg}}
+
+{{:proyectos:sapoconcho:bats4_2.jpg|bats4_2.jpg}}
+
+Para montar la shield necesitarás lo siguiente:
+
+  * La PCB BATS v.4.1
+  * 3 resistencias estándar (1/4 W) de 470 ohmios y 3 de 10k.
+  * 2 pulsadores de membrana para PCB de tamaño 12mm. Opcionalmente con tapa de color.
+  * 3 leds estándar de 5mm: uno verde, uno amarillo y uno rojos. Si eres socio de #nomássemáforos puedes elegir otros colores.
+  * 1 led RGB de 5mm, pero de tipo especial: un Neopixel de 5mm, idealmente con el 'cristal' translúcido. Referencia ws2812b through hole.
+  * 1 resistencia sensible a la luz o LDR.
+  * 2 potenciómetros de 10k. Referencia Trimpot 3386P-1-103.
+  * 1 interruptor deslizante para PCB de un circuito y 5 pines (dos de soporte y tres de conmutación). Con paso de 2mm. Referencia sk12d07vg4.
+  * 1 zumbador o buzzer de tipo activo con patas para soldar.
+  * Tiras de pines macho de longitud normal y largos. En este montaje las usaremos de colores, pero no es imprescindible. Con separación 2.54mm.
+  * Tiras de pines hembra para soldar zócalos.
+  * 7 puentes (jumper) para unir pines cerrando (o abriendo) un circuito.
+  * 2 fusibles rearmables PPTC de 0.65A - 1A.
+  * 2 condensadores cerámicos de 100nF (código 104).
+  * 1 driver de motores TB6612 o DRV8833.
+  * 3 conectores de bloque de terminal de tornillo para PCB. Dobles con separación de pines 2.54 mm.
+
+Y naturalmente necesitarás material de soldar con estaño. Para completar el robot necesitarás más cosas. Esa sólo es la lista para montar la PCB.
+
+===== Soldadura básica =====
+
+El mejor tutorial que conocemos para iniciarse a soldar está perfectamente resumido en [[https://blog.adafruit.com/2016/12/26/new-reference-card-soldering-101/|dos infografías de Adafruit]]. Están en inglés pero creo que se entienden muy bien (y en cualquier caso deberías pensar en aprender la lingua franca maker). Algo importante y que no está en esa infografía es que hay que limpiar con frecuencia la punta del soldador.
+
+{{:proyectos:bats:soldadura_1.jpg|soldadura_1.jpg}}
+
+{{:proyectos:bats:soldadura_2.jpg|soldadura_2.jpg}}
+
+Se trata en resumen de tocar con la punta del soldador garantizando que caliente los dos elementos a unir (placa y componente) durante un par de segundos, añadir la cantidad justa de hilo de soldar, esperar otro par de segundos y retirar el soldador (y nunca enfriar soplando). La duración del tiempo de calentar y fundir estaño puede ser mayor para uniones más grandes.
+
+===== Montaje de los componentes en la PCB =====
+
+La placa de circuito impreso de la BATS estará disponible en Github en formato Gerber para que puedas encargarlas a un servicio externo de fabricación de PCBs. Para montar los componentes soldando siempre es una buena idea empezar por los más pequeños (o los más bajos). En la BATS todos los componentes van montados en la cara superior. **Por tanto se pincharán por arriba y se soldarán por abajo**. La cara superior tiene recuadros y otras formas indicando la posición de los componentes. La cara inferior tiene los logos.
+
+==== Resistencias ====
+
+Empezaremos por las resistencias. Y para no confundirnos es mejor separarlas:
+
+  * Por un lado las 3 de 470 ohmios, que van en las posiciones R3, R4 y R5.
+  * Por otro lado las 3 de 10k, en las posiciones R2, R6 y R7.
+  * Una resistencia sensible a la luz, una LDR.
+
+Para montar una resistencia doblamos las patas, pinchamos sus extermos por los agujeros correspondientes y por el otro lado de la placa abrimos un poco las patas para que no se mueva al soldar. Soldamos los dos extremos y después de verificar (quizás con ayuda de una lupa) que ha quedado bien, cortamos lo que ha sobrado de la patilla. Las resistencias no tienen lo que llamamos polaridad, si las montas invirtiendo los extremos funcionan igual.
+
+{{:proyectos:bats:soldadura.jpg|soldadura.jpg}}
+
+{{:proyectos:sapoconcho:bats4_5.jpg|bats4_5.jpg}}
+
+Repetiremos esto hasta colocar todas las resistencias. La última es una resistencia especial: es sensible a la luz, es una [[https://es.wikipedia.org/wiki/Fotorresistor|LDR]]. Va en la posición R1.
+
+{{:proyectos:sapoconcho:bats4_7.jpg|bats4_7.jpg}}
+
+==== Interruptor ====
+
+En un lateral de la placa montaremos el siguiente componente más 'bajito': el interruptor. Sólo debemos asegurarnos de que la palanca vaya hacia fuera, el resto es sencillo, no se puede montar mal. Hay que soldar los cinco pines: aunque los laterales no se conectan a nada hacen de soporte.
+
+{{:proyectos:sapoconcho:c8f94ecb-ad5d-418f-9197-fb7300870ca3.jpeg|c8f94ecb-ad5d-418f-9197-fb7300870ca3.jpeg}}
+
+**ADVERTENCIA**: a partir de ahora las fotos incluirán el componente que se monta en cada paso pero no el resto, para no confundir. Pero cuando tú los vayas montando no se parecerá a las fotos.
+
+==== Pines para conectar los sensores ====
+
+La BATS original tenía componentes fijos (leds, botones, potenciómetros) para aprender a programar jugando. Aquí además de mantener esa función hemos añadido pines macho para que se le puedan usar más sensores o módulos externos. Para ello soldaremos líneas de pines a ambos lados de la placa. Utilizando pines de colores (rojo para alimentación positiva, negro para alimentación negativa o masa y un tercer color para la señal) será más fácil de identificar luego su función. Como dijimos no es imprescindible, pero si los usas fíjate en las fotos para hacerlo igual.
+
+Los pines tienen una parte corta y una larga. La que hay que pinchar y soldar es la corta.
+
+Entre el material necesario hay una tira de pines hembra para montar más adelante un zócalo. Ahora puedes usarla como soporte para las tiras de pines en su sitio mientras las sueldas.
+
+{{:proyectos:sapoconcho:bats4_8.jpg|bats4_8.jpg}}
+
+Hay tres sitios más donde hay tiras de pines, en este caso dos paralelas (3×2 pines) y una de dos pines. Servirán para conectar o desconectar a voluntad los componentes incluidos en la BATS. Para soldar los que van en línea doble 3×2 es más fácil unirlos con los puentes correspondientes (jumper). El de dos pines está al lado del LED Neopixel.
+
+{{:proyectos:319dc21b-b99e-4a6d-81ea-37375a3a74da.jpeg|319dc21b-b99e-4a6d-81ea-37375a3a74da.jpeg}}
+
+==== Pulsadores ====
+
+A continuación montaremos los dos pulsadores. Quizás es el componente más fácil porque se sujetan solos contra la placa y porque no es posible montarlos mal porque no encajarían. Si han entrado los pines está bien colocado. Seguro.
+
+{{:proyectos:bats4_14.jpg|bats4_14.jpg}}
+
+==== LEDs de colores ====
+
+Al revés que los pulsadores y las resistencias, **los LEDs sí tienen polaridad**. Es importante fijarse bien para montarlos correctamente y no equivocarse con las patas. Una forma es ver que una pata es más corta que la otra. Es la negativa, que va al agujero con huella cuadrada. Y otra es fijarse que la base no es exactamente redonda, sino que tiene un rebaje plano por un lado.
+
+{{:proyectos:bats:440px-led_5mm_green_en_.png}}
+
+En el dibujo de la PCB también aparece ese plano. Los lugares (tres en línea) donde hay que colocar los LEDs tienen dibujado un círculo con ese rebaje hacia abajo (si está mirando la placa de forma que lees bien las notas).
+
+Asegúrate de alinearlos y listo. Pincha el LED, abre las patas igual que las resistencias para que no se mueva y suelda los dos extremos. Después de revisar se puede cortar la patilla sobrante.
+
+{{:proyectos:sapoconcho:bats4_15.jpg|bats4_15.jpg}}
+
+==== LED RGB ====
+
+Este componente será capaz de producir luz de muchos colores por mezcla RGB (rojo, verde y azul). Tiene 4 patas y al igual que los de un solo color no es reversible, hay que revisar muy bien cual es la para negativa (GND), que se corresponde con una huella 'cuadrada' en la placa.
+
+{{:proyectos:sapoconcho:foto_21-12-22_18_45_58.jpg|foto_21-12-22_18_45_58.jpg}}
+
+Las patas tienen una separación más pequeña que el resto de componenteno tiene por lo que soldarlo sin que se unan todas las soldaduras no es sencillo. Hay que usar poco estaño y si se unen retirar el estaño sobrante con una bomba de succión. Es el componente más complicado, así que si tienes dudas puedes dejarlo sin montar.
+
+{{:proyectos:sapoconcho:foto_14-12-22_18_58_53.jpg|foto_14-12-22_18_58_53.jpg}}
+
+==== Zumbador ====
+
+Un zumbador es un pequeño altavoz muy cutre. Va montado en la esquina de arriba a la izquierda y como sucede con los LEDs hay que tener cuidado con la polaridad. Tanto el dispositivo como la placa tienen un signo (más). Asegúrate de alinearlos. Como siempre se pincha por arriba y se suelda por abajo. Si te hace falta, de nuevo puedes separar un poco las patas para que no te se caiga.
+
+{{:proyectos:sapoconcho:bats4_16.jpg|bats4_16.jpg}}
+
+==== Potenciómetros ====
+
+Los siguientes componentes son dos potenciómetros giratorios. Tienen tres patas pequeñas de conexión y al igual que los pulsadores no es posible conectarlos mal. Si encaja está bien montado.
+
+{{:proyectos:sapoconcho:bats4_18.jpg|bats4_18.jpg}}
+
+==== Conectores de tornillo, condensadores de motores y fusibles PPTC ====
+
+Montaremos ahora los conectores de tornillo a donde llegarán los cables de los motores y de la alimentación. Los dos de motores pueden unirse, la pieza tiene una pequeña corredera para juntarlos.
+
+A continuación, para evitar ruido de los motores a la placa, al lado de los conectores de los motores van dos pequeños condensadores cerámicos. No tienen polaridad, así que de nuevo da igual cómo los pongas. Aunque en la foto son amarillos, los hay de más colores según el fabricante.
+
+Por último, montaremos dos fusibles rearmables que sirven para proteger los circuitos. No tienen polaridad así que se montan como una resistencia (en realidad es una resistencia).
+
+{{:proyectos:bats4_17.jpg|bats4_17.jpg}}
+
+==== Zócalos para el driver de motores y Bluetooth ====
+
+Con las tiras de pines hembra montaremos ahora el zócalo para el driver o controlador de motores. Deberemos cortar dos trozos de 8 pines y uno de 4. Para ello es más sencillo si contamos posiciones y quitamos con un alicate la parte metálica de la siguiente, que nos indicará dónde hacer el corte con un cutter, un alicate de corte y otra herramienta. Una vez cortado puede repasar el borde para que quede más estético.
+
+{{:proyectos:sapoconcho:bats4_10.jpg|bats4_10.jpg}}
+
+Hay que tener cuidado al montar las tiras de 8 pines, deben quedar bien rectas o el driver no encajará. Mejor soldar sólo un pin, comprobar que está bien y luego soldar el resto.
+
+La otra tira es el conector para un módulo de comunicación Bluetooth (o cualquier otro que use los pines de comunicación serie).
+
+{{:proyectos:c82a7ac3-c37d-47aa-8942-25c7821d5a0e.jpeg|c82a7ac3-c37d-47aa-8942-25c7821d5a0e.jpeg}}
+
+===== Montaje de los pines de la PCB =====
+
+Si hemos llegado a buen puerto la placa tiene montados los componentes y sólo es necesario ahora montarle los pines de conexión. Necesitaremos de longitud extralarga (a la izquierda en la foto).
+
+{{:proyectos:bats:img_0424.jpg|img_0424.jpg}}
+
+Los pines que conectan la BATS al Arduino son los únicos se sueldan por la parte de arriba. Al contrario que la conexión para el servomotor aquí será fácil la sujección. Corta las tiras de **pines ultralargos**  en cuatro trozos correspondiente con los lados del Arduino y pínchalos en él para utilizarlo como soporte.
+
+{{:proyectos:sapoconcho:5f245724-3f7a-4d14-80c4-1a242ef6ea58.jpeg|5f245724-3f7a-4d14-80c4-1a242ef6ea58.jpeg}}
+
+A continuación pincha por encima la BATs y ya puedes soldar todos los pines uno detrás de otro. Una buena práctica es soldar dos esquinas opuestas para que no se mueva.
+
+{{:proyectos:668b9d3c-0c0c-4b91-abee-36c9eec99e22.jpeg|668b9d3c-0c0c-4b91-abee-36c9eec99e22.jpeg}}
+
+Y con esto finaliza el montaje. Ya puedes pasar a la parte de programación. Puedes aprovechar para soldar la mini PCB del driver a sus pines (en el caso de que no la hayas comprado ya así). El procedimiento es el mismo: pincha las tiras de pines en el zócalo para usarlo de soporte, pon encima el driver y suelda los pines.
+
+====== Iniciación a la programación física con Arduino ======
+
+Un programa no es nada más que una lista de instrucciones ordenada. Para que Arduino la entienda debemos utilizar su propio lenguaje, que es el que iremos aprendiendo por medio de ejemplos y proyectos. Llamamos programación física a la que tiene como resultado una acción en el munto real como encender una luz o un motor.
+
+En esta parte del taller vamos a usar los componentes incluidos en la placa (leds, botones, pontenciómetros…) por lo que los puentes deben estar montados. Si en un montaje más adelante necesitas pines de Arduino libres, puedes quitar alguno.
+
+Los pines asignados en la BATS son los siguientes:
+
+  * 0-1: recepción y transmisión (RX/TX) en el zócalo Bluetooth.
+  * 2: LED Neopixel (desconectable).
+  * 3-4: pulsadores (desconectables).
+  * 5: sin conectar.
+  * 6-9: control de motores.
+  * 10-12: LEDs de colores.
+  * 13: zumbador (desconectable).
+  * A0: LDR (desconectable).
+  * A1-A2: potenciómetros (desconectables).
+  * A3-A5: sin conectar.
+
+===== Proyecto 1. Salidas digitales =====
+
+==== Un mundo binario ====
+
+Una salida digital es una forma de comunicación binaria desde Arduino hacia el exterior. La llamamos binaria por que tiene sólo dos posibles estados: si/no, encendido/apagado, uno/cero. En el caso de un microcontrolador como Arduino esos estados significan que en un pin haya 5 voltios (estado HIGH) o cero voltios (LOW). Si en ese pin hemos conectado un led, cuando haya 5 voltios se encenderá.
+
+El programa de Arduino para encender un led tiene dos partes: en la primera le decimos que queremos usar un pin como salida digital (los pines pueden tener muchas funciones). En la segunda le decimos que lo encienda. Más adelante veremos además qué significa eso de //void loop() o setup()//. Puedes teclear el código o cortar y pegar. Las instrucciones deben acabar en punto y coma ;.
+<code>
+
+void setup()
+{
+  pinMode(10,OUTPUT); // vamos a usar el pin 10 como salida
+}
+
+void loop()
+{
+  digitalWrite(10,HIGH); // pone el pin 10 en estado 'alto', a 5 voltios
+}
+
+</code>
+
+**NOTA**: Para entender mejor los programas ponemos comentarios a las instrucciones. Todo lo que está después de dos barras es ignorado por Arduino.
+
+Después de escribir cualquier programa es necesario guardarlo y subirlo a la placa Arduino. Cuando subas el código si todo ha ido bien se habrá encendido un led verde o el que hayas soldado al pin 10. Por la forma en que está conectada la placa BATS al subir un programa oiremos un pitido. Eso es que todo va bien.
+
+==== Blink: el led parpadea ====
+
+El programa anterior tiene dos partes, y cada una encierra un grupo de instrucciones entre llaves {}.
+
+  * //void setup()//: estas tareas (instrucciones) se harán (ejecutarán) sólo una vez, cuando arrancamos o reiniciamos Arduino.
+  * //void loop()//: esas tareas se repetirán para siempre, cuando acabe la lista empezará por el principio otra vez.
+Vamos a aprovechar esto para probar a encender y apagar el led de antes indefinidamente
+
+<code>
+void setup() // esto se hará sólo una vez
+{
+  pinMode(10,OUTPUT); // vamos a usar el pin 10 como salida
+}
+
+void loop() // esto se va a repetir para siempre
+{
+  digitalWrite(10,HIGH); // pone el pin 10 en estado 'alto', a 5 voltios, y enciende el led
+  delay(500); // espera medio segundo (500 milisegundos) sin hacer nada
+  digitalWrite(10,LOW); // pone el pin 10 en estado 'bajo', y apaga el led
+  delay(500); // espera medio segundo sin hacer nada
+}
+
+</code>
+
+Ahora el led debería parpadear. Medio segundo encendido, medio segundo apagado y seguir así. Cambiando los valores de la instrucción //delay(milisegundos)//  podemos cambiar el ritmo.
+
+Arduino ya tiene este programa entre sus ejemplos como
+
+**Archivo>Ejemplos>01.Basics>Blink**
+
+Sólo hay que buscar en el programa 'LED_BUILTIN’ y en todos los sitios donde aparezca cambiarlo por un 12. O quizás decidas no cambiarlo, a ver qué sucede. La prueba y error es un método maker fundamental.
+
+==== Guardar números: Variables ====
+
+Supongamos que ahora queremos cambiar qué LED encendemos en el programa. El amarillo, por ejemplo, está conectado al pin 11. Podemos cambiar el 10 por 11 en todos los sitios del programa donde aparece. Pero si el programa es largo esto es un follón. Para esto (y muchas más cosas) usamos variables, que son nombres que guardan números y otros contenidos. Tendrán un nombre y un valor. Cada vez que cambiemos el valor se cambiará en todos los sitios donde aparezca la variable.
+
+<code>
+int led=10; // creamos una variable con nombre led y valor 10
+void setup()
+{
+  pinMode(led,OUTPUT); // vamos a usar el pin 'led' como salida
+}
+
+void loop()
+{
+  digitalWrite(led,HIGH); // pone el pin 'led' en estado 'alto', a 5 voltios, y enciende el led
+  delay(500); // espera medio segundo sin hacer nada
+  digitalWrite(led,LOW); // pone el pin 'led' en estado 'bajo', y apaga el led
+  delay(500); // espera medio segundo sin hacer nada
+}
+
+</code>
+
+Este programa nuevo funciona igual que el anterior, habiendo parpadear el led verde. Pero si ahora cambiamos la primera instrucción y le damos valor 11 en vez de 10 a la variable led, todas las instrucciones que viene después (el pin es de salida, encender e pin, apagar el pin) se harán sobre el pin 11 y el que parpadeará será el pin amarillo.
+
+==== Tarea 1: Mi primer semáforo, chispas ====
+
+Tenemos tres leds sencillos en total
+
+  * Un led verde en el pin 12.
+  * Un led amarillo en el pin 11.
+  * Un led rojos en el pin 10.
+
+Sabemos que los proyectos con semáforos acaban siendo odiados por lo mucho que se usan (o abusan), pero están bien para aprender. La tarea final de este proyecto es escribir un programa que encienda y apague las luces según un semáforo, de momento sin parpadear. Debe hacer lo típico:
+
+  * Encender el led verde 5 segundos.
+  * Encender el led amarillo 2 segundos.
+  * Encender el led rojo 5 segundos.
+
+El objetivo de la tarea es escribir código desde cero (en lugar de copiarlo y pegarlo) para fijar conceptos.
+
+===== Proyecto 2: Instrucciones repetidas en bucle =====
+
+Tengo un led amarillo, que es lo que parpadea ahora
+
+Al semáforo de la tarea del proyecto 1 le vamos a añadir una complicación para que sea más realista: la luz amarilla en lugar de estar encendida 2 segundos, ahora va a parpadear 4 veces. Entre las tareas de encender la luz verde y la roja, meteríamos unas nuevas así:
+
+<code>
+  digitalWrite(11,HIGH);
+  delay(250);
+  digitalWrite(11,LOW);
+  delay(250);
+  digitalWrite(11,HIGH);
+  delay(250);
+  digitalWrite(11,LOW);
+  delay(250);
+  digitalWrite(11,HIGH);
+  delay(250);
+  digitalWrite(11,LOW);
+  delay(250);
+  digitalWrite(11,HIGH);
+  delay(250);
+  digitalWrite(11,LOW);
+  delay(250);
+
+</code>
+
+Sin embargo viendo el código vemos que hay muchas instrucciones que se repiten continuamente. Si en vez de 4 veces fuesen muchas más esto ya no sería muy práctico. Tiene que haber una forma más simple de hacer esto.
+
+Para eso vamos a usar una nueva forma de dar instrucciones, una estructura de programación para repetir tareas. Existe en casi todos los lenguajes de programación y se llama bucle //for//. En su forma más simple puede verse abajo
+
+<code>
+void loop()
+{
+  for (int i=0; i<8; i=i+1) // esta tarea se repetirá 8 veces
+  {
+    digitalWrite(11,HIGH);
+    delay(250);
+    digitalWrite(11,LOW);
+    delay(250);
+  }
+}
+
+</code>
+
+La forma de escribir un bucle for tiene tres partes separadas por punto y coma:
+
+  * Definir una variable y una condición inicial: usaremos la variable i, con valor inicial cero.
+  * Definir la condición que indica cuándo terminar el bucle: se continuará mientras que i sea menor 8.
+  * Definir el cambio entre paso y paso del bucle: sumando 1 para que i vaya tomando los valores 0, 1, 2… y al llegar a 8 terminar.
+
+La tarea a repetir vendrá luego entre corchetes {}.
+
+**NOTA**: es bastante habitual usar la variable i por //índice//  pero podemos llamarla como queramos. O casi. No podemos usar nombres que ya tienen otro uso, como la propia palabra //for//.
+
+==== Ver cosas en la pantalla: el monitor serie ====
+
+Al contrario que cualquier ordenador al que estamos acostumbrados Arduino no tiene una pantalla en la que mostrarnos cosas, pero sí podemos usar una forma para mostrar lo que queramos en la pantalla del ordenador al que está conectado (mientras lo esté): el monitor serie.
+
+Para usarlo tenemos que meter una instrucción especial en el //setup()//  y cada vez que queramos mostrar -diremos imprimir en la pantalla- algo que puede ser un texto, un número…
+
+<code>
+void setup()
+{
+  Serial.begin(9600); // decimos a Arduino que vamos a usar el monitor serie
+}
+
+void loop()
+{
+  for (int i=0; i<10; i=i+1)
+  {
+    Serial.println(i); // "imprimimos" el valor de i por el monitor serie y saltamos de línea
+  }
+  delay(1000000); // ver TRUCO
+}
+
+</code>
+
+Una vez que carguemos el código debemos abrir el monitor serie, un icono con forma de lupa arriba a la derecha en Arduino o en el menú Herramientas>Monitor Serie.
+
+{{:proyectos:monitor_serie.jpg|monitor_serie.jpg}}
+
+**TRUCO**: Sabemos que Arduino está preparado para repetir todo lo que hay en void loop() (en este caso contar de 0 a 9). Si queremos que haga las cosas sólo una vez un truco posible es poner un delay muy largo al final.
+
+Este programa está pensado para probar valores diferentes de los iniciales (i=0), finales (i<10) y de salto (i=i 1) para experimentar qué pasa viendo el resultado en el monitor serie. En general el monitor nos servirá para ver en mitad de un programa qué está pasando.
+
+==== El semáforo realista ====
+
+Si sólo queremos que parpadee la luz amarilla podíamos haber hecho igual que en el Blink del proyecto 1, pero para meter esto dentro de un programa que hace más cosas ésta es la manera más simple. El programa completo ahora sería
+<code>
+
+void setup()
+{
+  pinMode(12,OUTPUT); // led verde
+  pinMode(11,OUTPUT); // led amarillo
+  pinMode(10,OUTPUT); // led rojo
+}
+
+void loop()
+{
+  digitalWrite(12,HIGH); // instrucciones para encender y apagar la luz verde
+  delay(5000);
+  digitalWrite(12,LOW);
+
+  for (int i=0; i<8; i=i+1) // esta tarea se repetirá 8 veces
+  {
+    digitalWrite(11,HIGH);
+    delay(250);
+    digitalWrite(11,LOW);
+    delay(250);
+  }
+
+  digitalWrite(10,HIGH); // instrucciones para encender y apagar la luz roja
+  delay(5000);
+  digitalWrite(10,LOW);
+}
+
+</code>
+
+==== Tarea 2: Las luces de feria ====
+
+Nuestras luces ya no son un semáforo, ahora son una feria. Escribir un programa para que parpadeen todos los leds (los verdes, amarillo y rojos) por turnos. El orden de parpadeo y la frecuencia son libres.
+
+Como bola extra, tratar de que parpadeen por grupos. El objetivo de la tarea y la bola extra es tratar de entender bien el orden en que se realizan las instrucciones.
+
+===== Proyecto 3: Salidas "analógicas" =====
+
+==== Donde dije digital, digo Diego ====
+
+//Tucho dixit//
+
+Los gallegos sabemos mejor que nadie que en esta vida no todo es blanco o negro, encendido o apagado y que a veces la mejor respuesta es depende. O no. Depende.
+
+Las salidas digitales tienen como posibles estados de Arduino 0 voltios y 5 voltios, pero entre 0 y 5 hay todo un mundo. Las salidas que pueden tener valores intermedios se llaman analógicas. En realidad Arduino hace un truco que se llama PWM ([[https://es.wikipedia.org/wiki/Modulación_por_ancho_de_pulsos|Pulse Width Modulation]]) que no es exactamente eso pero de momento nos vale como si lo fuera.
+
+A las salidas analógicas les daremos valores entre 0 (que corresponde a 0 voltios) y 255 (que corresponde a 5 voltios). Los valores intermedios encenderán a medias el led según una regla de tres.
+
+**NOTA**: no todos los pines de Arduino UNO pueden hacer esta función PWM. Están marcados en la placa con el símbolo ~, como el pin 11 del led amarillo. El 12 por ejemplo no la tiene.
+<code>
+
+int luminosidad = 0; // probaremos valores entre 0 y 255
+void setup()
+{
+  pinMode(10,OUTPUT); // vamos a usar el led rojo de la BATS
+}
+
+void loop()
+{
+  analogWrite(10,luminosidad); // poner el pin con el valor intermedio buscado
+}
+
+</code>
+
+Cambiando el valor de la variable luminosidad entre 0 y 255 veremos que el led se va encendiendo más o menos. Y podemos comprobar que no es muy proporcional. A partir de un valor de 50 ya brilla a tope. También podemos probar qué pasa si metemos un número más grande de 255.
+
+==== No me despiertes bruscamente ====
+
+Si quieremos hacer cambiar la luminosidad del led poco a poco podemos probar esto
+
+<code>
+void setup()
+{
+  pinMode(11,OUTPUT);
+}
+
+void loop()
+{
+  for (int i=0; i<60; i = i+10)
+  {
+    analogWrite(11,i);
+    delay(500);
+  }
+}
+
+</code>
+
+A diferencia del bucle que usábamos antes en la que la variable i se usaba sólo como contador para repetir muchas veces, ahora esa variable sirve para algo dentro del bucle, para definir la luminosidad. Con este programa, cada 500 milisegundos iremos subiendo la intensidad de luz hasta 50 y volverá a empezar de cero.
+
+La variable del bucle en este caso ya no sube de uno en uno, sino de 10 en 10 tomando valores i=0, 10, 20, 30, 40, 50.
+
+También podríamos empezar con un valor alto para la variable y reducirlo restando valores hasta llegar a un mínimo. El IDE de Arduino tiene un programa de ejemplo que hace algo parecido:
+
+**Archivo>Ejemplos>03.Analog>Fading**  (cambiar el pin del led de 9 a 11)
+
+==== Tarea 3: el driver de motores ====
+
+En el montaje de la shield hemos instalado un circuito controlador de motores. Está controlado por las salidas 6(PWM) y 7 para el motor izquierdo, y 8 y 9(PWM) para el motor derecho. El objetivo de la tarea es probar diferentes valores en los pines con números entre 0 y 255 para los PWM y únicamente HIGH/LOW para los demás. Recuerda declararlos como salidas en el //setup//. Ejemplo:
+
+<code>
+  digitalWrite(7,HIGH);
+  analogWrite(6,128);
+
+</code>
+
+===== Proyecto 4: Entradas digitales y analógicas =====
+
+==== Información desde el exterior ====
+
+Podemos interpretar las entradas de datos a Arduino como la información que tenemos del exterior por nuestros sentidos.
+
+{{:proyectos:gpio.png}}
+
+==== Pulsar un botón ====
+
+En el caso de las entradas digitales, la información será como lo visto para las salidas: si/no, encendido/apagado, uno/cero. Empezaremos con la más sencilla: un interruptor o un botón, que cuando lo pulsemos cambiará de estado. Como para las salidas, necesitamos declarar la función del pin antes de usarlo. En la shield tenemos los dos botones conectados a los pines 3 y 4. Para ver su estado, vamos a usar el monitor serie.
+
+<code>
+void setup()
+{
+  pinMode(3,INPUT); // vamos a usar el pin 3 como entrada
+  Serial.begin(9600); // decimos a Arduino que vamos a usar el monitor serie
+}
+
+void loop()
+{
+  int entrada = digitalRead(3);
+  Serial.println(entrada);
+  delay(10);
+}
+
+</code>
+
+Subiendo el código y abriendo el monitor serie podremos ver lo que sucede cuando pulsamos los botones. El IDE tiene un programa de ejemplo parecido
+
+**Archivo>Ejemplos>01.Basics>DigitalReadSerial**  (cambiar el pin digital 2 por el 3/4).
+
+==== Encender la luz ====
+
+Podemos unir la información de entrada con la de salida enlazando un botón con un led.
+
+<code>
+void setup()
+{
+  pinMode(3,INPUT); // pin 11 con un botón
+  pinMode(12, OUTPUT); // pin 2 con el led verde
+}
+
+void loop()
+{
+  int entrada = digitalRead(3);
+  digitalWrite(12,entrada);
+  delay(10);
+}
+
+</code>
+
+==== Entradas analógicas ====
+
+Arduino tiene varios pines con entradas que son capaces de medir un valor intermedio entre LOW (0 voltios) y HIGH (5 voltios). Para medir algunos parámetros (temperatura, distancia…) utilizaremos sensores que leeremos con una entrada analógica. La shield tiene dos resistencias variables (potenciómetros) que pueden simular una entrada analógica para ver cómo se usa.
+
+El IDE tiene un ejemplo que lee una entrada y muestra el resultado por el monitor serie.
+
+**Archivo>Ejemplos>01.Basics>AnalogReadSerial**: cambiar el pin A0 por el A1/A2.
+
+Una vez subido el programa y abierto el monitor serie giraremos el potenciómetro para ver el resultado. El número que muestra el monitor serie será 0 en un extremo, 1023 en el otro y un valor proporcional para valores intermedios.
+
+==== Tipos de variables ====
+
+Hasta ahora hemos definido variables con un nombre, y les hemos puesto por delante la coletilla 'int' pero sin explicar qué significa eso. Cuando creamos una variable tenemos que decirle a Arduino qué tipo de números -y otras cosas que no lo son- va a almacenar. Veremos ahora los tipos más comunes:
+
+  - 'int': en las variables //integer//  almacenaremos números enteros. Positivos o negativos, pero sin decimales.
+  - 'float': en las variables //floating point//  almacenaremos números reales. Positivos o negativos, con decimales.
+
+Cuando leemos una entrada analógica, obtenemos un número entero entre 0 y 1023, que se corresponde con una tensión en voltios de 0 a 5 según una regla de tres. El programa de ejemplo
+
+**Archivo>Ejemplos>01.Basics>ReadAnalogVoltage**
+
+lee el valor en una entrada (entero) y lo convierte en un número real de 0 a 5 con los decimales que correspondan.
+
+Otro tipo de variable común es 'boolean', que es una condición y sólo puede tener valores 'TRUE' o 'FALSE', o bien 1 y 0.
+
+==== Tarea 4: Regular la luz ====
+
+Leer una entrada (de uno de los dos potenciómetros) y en proporción a ella encender un led de forma variable.
+
+===== Proyecto 5: Tareas condicionadas =====
+
+==== Sentencia if-then ====
+
+Con mucha frecuencia querremos que nuestro programa haga una determinada tarea, pero sólo si se cumple una condición. La forma de hacerlo es con una sentencia if-then (si-entonces). La forma básica es con la instrucción if, después la condición entre paréntesis () y la lista de tareas entre corchetes {}.
+
+<code>
+if (condición)
+{
+  // tareas a realizar si se cumple la condición
+}
+
+</code>
+
+Una forma más completa es tener una tarea alternativa si la condición no se cumple.
+
+<code>
+if (condición)
+{
+  // tareas a realizar si se cumple la condición
+}
+else
+{
+  // tareas a realizar si NO se cumple la condición
+}
+
+</code>
+
+La condición será una expresión matemática (igual, mayor, menor…). El programa anterior que enlazaba el botón con el led puede hacerse también de este modo
+
+<code>
+void setup()
+{
+  pinMode(3,INPUT); // pin 3 con un botón
+  pinMode(12, OUTPUT); // pin 12 con el led verde
+}
+
+void loop()
+{
+  int entrada = digitalRead(3);
+  if (entrada == 1) // la comparación de igualdad de dos números se escribe con un símbolo doble ==
+  {
+    digitalWrite(12,HIGH);
+  }
+  else
+  {
+    digitalWrite(12,LOW);
+  }
+  delay(10);
+}
+
+</code>
+
+El IDE tiene un ejemplo de if-then que conecta un potenciómetro con un led
+
+**Arduino>Ejemplos>05.Control>IfStatementConditional**: cambiar el analogPin por A1 y el ledPin por 10/11. Probar diferentes valores el umbral (threshold) y girar el potenciómetro.
+
+==== Variables de estado ====
+
+Vamos a definir ahora un estado del sistema con una variable que vamos a llamar 'encendido', y que podrá tener valores 0 y 1. El cambio de un estado a otro se hará con los botones del pin 3 y el 4. Y el resultado de estar encendido será el led verde y el apagado el led rojo.
+
+<code>
+int encendido = 0;
+
+void setup()
+{
+  pinMode(3,INPUT); // pin 3 con un botón
+  pinMode(4,INPUT); // pin 4 con un botón
+
+  pinMode(12, OUTPUT); // pin 12 con el led verde
+  pinMode(10, OUTPUT); // pin 10 con el led rojo
+
+}
+
+void loop()
+{
+  if (encendido == 0)
+  {
+    encendido = digitalRead(3); // si el sistema está apagado y se pulsa el botón verde, pasa a encendido
+  }
+  if (encendido == 1)
+  {
+    encendido = !digitalRead(4); // si el sistema está encendido y se pulsa el botón rojo, pasa de apagado. El símbolo ! indica que intercambiamos los valores 0 y 1.
+  }
+  digitalWrite(12,encendido);
+  digitalWrite(10,!encendido);
+  delay(10);
+}
+
+</code>
+
+Este programa con una variable de estado es el ejemplo más sencillo de un autómata de estados finitos (en inglés Finite State Machine). Parece un programa sencillo, pero añadido a los programas de movimiento del robot nos permitirá pararlo o volver a ponerlo en marcha en cualquier momento.
+
+==== Tarea 5: luces autónomas ====
+
+En el pin A0 de la BATS hay conectado un sensor de luz. El programa debe leer la información, y si la luz no es suficiente (establecer un umbral) se debe encender una luz led. Así es como funcionan algunas farolas.
+
+===== Proyecto 6: Librerías de funciones =====
+
+A mayores de las funciones básicas de Arduino, podemos añadir funciones extra por medio de librerías. El programa deberá comenzar con una instrucción #include para añadir la librería correspondiente en el menú Programa>Incluir librería. Esa librería deberá estar en el IDE de Arduino. Si no la tienes deberás buscar cómo instalarla. Las diferentes versiones del IDE lo hacen cada una a su modo.
+
+Ahora vamos a utilizar una librería de Adafruit para usar el led RGB Neopixel. Cada librería tiene su lista de instrucciones, deberás buscarlas del programador/fabricante correspondiente.
+
+<code>
+#include <Adafruit_NeoPixel.h> // incluye en el programa la librería
+
+int PIN=2;  // Define el pin en el que está conectado el Neopixel
+int NUMPIXELS=1;   // Define el número de leds neopixel encadenados
+Adafruit_NeoPixel pixel = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB   NEO_KHZ800); // crea el objeto pixel
+
+void setup() {
+  pixel.begin(); // Inicializa la libreria NeoPixel.
+}
+
+void loop() {
+    pixel.setPixelColor(0, pixel.Color(0,255,0)); // Asigna el color con valores Green-Red-Blue entre 0 y 255
+    pixel.show(); // Actualiza los leds.
+    delay(500);
+}
+
+</code>
+
+(*) Esta parte de la wiki se la tenemos que agradecer al proyecto [[https://tecnoloxia.org/mclon/extras-ide/luces-de-cores-ide/|mClon]].
+
+==== Tarea 6: Librería para el sensor de ultrasonidos y el zumbador ====
+
+Existe una librería que se llama NewPing para utilizar los sensores de ultrasonidos. La tarea es buscarla, instalarla y hacer un programa para leer el sensor y sacar la salida por el monitor serie.
+
+También puedes mirar en la web [[https://programarfacil.com/blog/arduino-blog/buzzer-con-arduino-zumbador/|Programar es fácil]] para usar el zumbador con la librería EasyBuzzer.
+
+===== Proyecto 7. Compartir programas =====
+
+==== Hardware y software abiertos ====
+
+Si estás leyendo esto es en parte porque en Bricolabs estamos comprometidos con compartir el conocimiento. Hay muchas formas de hacer esto como documentar cómo has diseñado una placa, escribir una wiki o hacer talleres. Nosotros estamos convencidos y comprometidos con el hardware libre como Arduino o la propia BATS y con el software libre como Arduino -de nuevo-, GNU/Linux y los programas que ves aquí.
+
+==== Github ====
+
+Hay muchas maneras de compartir programas, pero ahora son mucho más cómodas que los tiempos de copiar cintas casete. La plataforma que usamos para casi todo es Github, una web donde puedes abrirte una cuenta para almacenar tus programas en la nube. Si compartes tus programas en una cuenta pública, además es gratuita. Todo el proyecto BATS está en [[https://github.com/brico-labs/BATS|Github]] excepto esta wiki.
+
+{{:proyectos:github.png}}
+
+==== Tarea 7: Probar programas de Github ====
+
+Entra en la carpeta de [[https://github.com/brico-labs/BATS/tree/master/V4|software]] del proyecto BATS V4 en Github y prueba algún programa en tu Arduino con BATS. Una manera sencilla es cortar y pegar el programa a la ventana de Arduino.
+
+El objetivo de esta tarea es empezar a conocer Github y usar programas ajenos.
+
+Bola extra: crea una cuenta para tí en Github, crea un repositorio y dentro de él un archivo con algún programa tuyo. No olvides que la carpeta sea pública.
+
+====== Montaje del chasis ======
+
+A continuación montaremos el chasis diseñado para montar un Arduino UNO con una shield. Aunque en realidad podrías usar la BATS con cualquier otro de 2 ó 4 ruedas.
+
+===== Piezas imprimibles =====
+
+El chasis de Sapoconcho XL consta de las siguientes piezas:
+
+  * Bases superior e inferior.
+  * Soporte de motores (1 unidad).
+  * Pilares de unión (o separación) de las dos bases (4 unidades). Pueden usarse en su lugar separadores de circuitos de 30mm.
+  * Ruedas (2 unidades).
+  * Soporte de sensores de ultrasonidos (1 ó 2 unidades).
+
+En una impresora típica de 200x200mm se pueden imprimir todas las piezas en dos tandas.
+
+{{:proyectos:prusa_sapoconcho.jpg|prusa_sapoconcho.jpg}}
+
+Todas las piezas están en este [[https://github.com/felixstdp/sapoconcho_bats/tree/main/3dprint|repositorio]] de Github. Ahí puedes encontrar los archivos originales de OpenSCAD para modificarlos a tu gusto o los STL para imprimir directamente.
+
+===== Montaje mecánico =====
+
+El chasis base tiene pocas piezas y el montaje es muy sencillo.
+
+{{:proyectos:chasis_base.png}}
+
+**Paso 1**: Los motores amarillos se unirán al soporte con 4 tornillos M3x30.
+
+{{:proyectos:foto_5-4-22_22_25_45.jpg|foto_5-4-22_22_25_45.jpg}}
+
+**Paso 2**: Unir la base inferior al soporte con dos tornillos M3x10. También se puede poner ahora la bola loca o 'ballcaster', el tercer punto de apoyo. Pueden estar duros los tornillos y para eso pueden usarse un alicate para sujetar el pilar o bien dos llavez allen, una por cada lado.
+
+{{:proyectos:foto_5-4-22_22_28_43.jpg|foto_5-4-22_22_28_43.jpg}}
+
+**Paso 3**: Montar los 4 pilares a la base inferior con 4 tornillos M3x10.
+
+{{:proyectos:foto_5-4-22_22_34_04.jpg|foto_5-4-22_22_34_04.jpg}}
+
+**Paso 4**: Montar la base superior a los pilares con otros 4 tornillos M3x10. Ojo a la orientación en la foto.
+
+{{:proyectos:montaje_4.jpg|montaje_4.jpg}}
+
+**Paso 5**: Colocar las ruedas -cada una con su 'neumático'-, montar el Arduino UNO con tornillos M3x6 (dos en diagonal son suficientes) y pinchar la Shield sobre él (en la foto se ve una distinta, debes montar la BATS).
+
+{{:proyectos:montaje_5.jpg|montaje_5.jpg}}
+
+Hay también la opción de montar motores tipo N20, cambiando el soporte y las ruedas.
+
+{{:proyectos:soporte_n20.png}}
+
+===== Driver y conexionado de motores =====
+
+Arduino no puede operar directamente un motor. Necesita un intermediario o [[https://bricolabs.cc/wiki/guias/control_de_motores|driver]]. Existen dos drivers de motores muy parecidos y válidos para Sapoconcho XL: el Toshiba TB6612 y el DRV8833. Aunque los pines no son iguales, el cableado y la programación hacen que sean intercambiables.
+
+En cada motor debemos conectar dos cables de unos 10cm. Un extremo soldado a los terminales de cobre (ojo, son frágiles) y el otro pelado y con estaño para conectar a la placa con los enganches de tornillo. Puede ser una buena idea una vez soldados los cables de los motores sujetarlos con una mini brida para evitar tirones y que se rompan.
+
+{{:proyectos:sapoconcho:bats4_19.jpg|bats4_19.jpg}}
+
+La shield tiene un zócalo para montar cualquiera de los dos drivers y cuatro conectores para los cables de los motores. Si al probar las funciones de movimiento alguna rueda gira al revés, hay que intercambiar los cables de ese motor.
+
+===== Alimentación =====
+
+Para alimentación utilizaremos un portapilas para 4 pilas AA. Y para que valga para cualquier proyecto, puedas usar pilas recargables y reduzcamos la contaminación añadiremos siempre un [[https://es.wikipedia.org/wiki/Convertidor_reductor-elevador|regulador dc-dc]] elevador para elevar la tensión de salida (step-up). El LM2587 y el XL6009 valen y tienen un tornillo para regular la tensión de salida; un buen valor es 7,5v.
+
+{{:proyectos:bats4_20.jpg|bats4_20.jpg}}
+
+Las conexiones del step-up son muy sencillas:
+
+  * Entrada negativa (IN-): la soldaremos al negativo -negro- del portapilas.
+  * Entrada positiva (IN+): la soldaremos a un cable rojo de unos 6 centímetros, el otro extremo lo dejaremos pelado y con estaño.
+  * Cable positivo -rojo- del portapilas: lo cortaremos a unos 6 centímetros y lo dejaremos con el extremo pelado y con estaño.
+  * Salidas positiva y negativa (OUT+/-): las conectaremos con un cable doble de unos 8 centímetros al conector de alimentación del Arduino.
+
+Si hemos hecho bien esas conexiones ahora sólo queda atornillar el cable positivo del portapilas y de la entrada del step-up al conector de la esquina. El del portapilas debe ir al extremo más esquinado.
+
+{{:proyectos:bats4_21.jpg|bats4_21.jpg}}
+
+====== Programación de Sapoconcho ======
+
+===== Funciones en Arduino =====
+
+Cuando repetimos una tarea (un conjunto de instrucciones) con frecuencia, podemos enlatarlas en una función. Las funciones tendrán un nombre y un grupo de tareas entre corchetes {}. También pueden tener valores de entrada y salida, pero eso lo veremos más adelante con ejemplos.
+
+Para el caso de la luz parpadeante del semáforo, podemos crear la siguiente función:
+<code>
+
+void blink()
+{
+  for (int i=0; i<8; i=i+1) // esta tarea se repetirá 8 veces
+  {
+    digitalWrite(12,HIGH);
+    delay(250);
+    digitalWrite(12,LOW);
+    delay(250);
+  }
+}
+
+</code>
+
+Una vez que hemos definido la tarea, cada vez que la llamemos por su nombre //blink()//, se ejecutarán las tareas que hemos escrito. De ese modo si se van a hacer varias veces a lo largo del programa, no necesitamos escribir cada vez todo el código. El código de las funciones puede estar en cualquier parte del programa, pero suele ponerse al final de todo, aparte del programa principal. También puede ponerse en una pestaña aparte en el IDE.
+
+===== Función de movimiento básica =====
+
+Para programar el Arduino con código escrito puedes utilizar la función de movimiento siguiente (copia y pega el código en el IDE).
+
+El código tiene tres partes:
+
+  * En la primera -setup- se incluye la parte del programa que se ejecuta sólo una vez, al iniciar el Arduino.
+  * En la segunda -loop- es donde después escribirás el programa principal, que se ejecutará en bucle.
+  * En la tercera -drive- es donde se define la función (o subrutina) de movimiento para simplificar el programa principal.
+
+La función drive incluye la numeración y configuración de pines. Puede ponerse en una pestaña aparte en el IDE de Arduino, eso hará que el código principal con el setup y el loop se lea más fácil.
+
+<code>
+void setup() {
+
+}
+
+//programa principal
+void loop(){
+
+}
+
+//función de movimiento de motores
+void drive(int L, int R, int t) //velocidad de las ruedas izquierda y derecha, positivo hacia delante, tiempo en milisegundos
+{
+//Arduino UNO y driver TB6612/DRV8833
+  const int AIN2 = 9; // PWMA
+  const int AIN1 = 8;
+  const int BIN1 = 7;
+  const int BIN2 = 6; // PWMB
+
+//iniciar el modo de los pines para los motores
+  pinMode(AIN1,OUTPUT);
+  pinMode(AIN2,OUTPUT);
+  pinMode(BIN1,OUTPUT);
+  pinMode(BIN2,OUTPUT);
+
+// evitar valores no válidos para el PWM
+  L=constrain(L,-255,255);
+  R=constrain(R,-255,255);
+
+// poner valores a los pines
+  digitalWrite(AIN1, L<0);
+  analogWrite(AIN2, L+255*(L<0));
+  digitalWrite(BIN1, R<0);
+  analogWrite(BIN2, R+255*(R<0));
+
+  delay(t);
+}
+
+</code>
+
+==== Movimientos de prueba ====
+
+El uso de la función drive es sencillo. Se llama como **drive (velocidad rueda izquierda, velocidad rueda derecha, tiempo)**  Las velocidades pueden estar entre -255 y 255. Positivo hacia delante, negativo hacia atrás. El tiempo en milisegundos.
+
+Hay cinco **funciones básicas**:
+
+  * Movimiento hacia adelante: drive(200,200,1000); probar a cambiar los valores de velocidad y tiempo.
+  * Movimiento hacia atrás: drive(-200,-200,1000);
+  * Giro en redondo: drive(-200,200,1000); probar hacia donde gira.
+  * Giro hacia el lado contrario: drive(200,-200,1000);
+  * Parar: drive(0,0,0);
+
+La última es importante. Si no la incluimos después de cualquiera de las otras, el robot no parará.
+
+{{:guias:guias:pid:differential-steering-tutorials-42bots2.png}}
+
+El primer ejercicio puede ser ajustar los valores de movimiento hacia adelante para que se mueva en línea recta. Es poco probable que con dos valores iguales lo haga, los motores no son idénticos.
+
+El segundo ejercicio puede ser ajustar los valores de movimiento de giro para que rote un ángulo fijado, por ejemplo 90 grados o 180 grados.
+
+El tercer ejercicio puede ser encadenar órdenes para hacer figuras, por ejemplo un cuadrado, una estrella…
+
+**Ejercicios más complejos**:
+
+La función drive con dos valores positivos pero diferentes describe un arco. Probar a encadenar arcos para hacer un movimiento en eses. Probar a poner obstáculos y salvarlos serpenteando.
+
+===== Montaje de los sensores y movimientos autónomos =====
+
+Los sensores tienen casi siempre dos pines de alimentación (positivo y negativo) y uno o más pines de datos. Para eso hemos puesto en los laterales de la placa los pines de Arduino junto con las líneas de alimentación positiva (roja) y negativa o masa (negra).
+
+==== Sensores de ultrasonidos ====
+
+Los sensores del ultrasonidos HC-SR04 tienen cuatro pines: alimentación (VCC), masa (GND), trigger y echo. Estos dos últimos los unimos con una soldadura para ahorrarnos un cable, aunque tenemos que advertir que algunos modelos de algunos fabricantes no permiten esto, y al hacerlo no funcionan. Cablearemos con Dupont hembra-hembra de tres hilos de los pines sensor a la shield.
+
+{{:proyectos:hc-sr04_c.jpg|hc-sr04_c.jpg}}
+
+El montaje del soporte a la placa superior es sencillo, con un tornillo M3x10 y una tuerca. La placa tiene tres orificios, usaremos el central para montar un único sensor o los laterales para montar dos.
+
+{{:proyectos:montaje_us.jpg|montaje_us.jpg}}
+
+Para leer la distancia que mide el sensor usaremos una nueva función, que de nuevo podemos guardar en una pestaña nueva en el IDE para dejar más limpio el programa principal
+<code>
+
+long sonar(int trig)
+{
+  pinMode(trig, OUTPUT);
+  digitalWrite(trig,LOW); // trigger envia un pulso ultrasónico
+  delayMicroseconds(5);
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(10);
+  pinMode(trig, INPUT);
+  unsigned long tiempo=pulseIn(trig, HIGH);    // echo espera a recibir la respuesta
+  unsigned long distancia= int(0.17*tiempo);  // fórmula para calcular la distancia
+  return distancia;
+}
+
+</code>
+
+El uso es sencillo, la llamamos como
+
+long distancia = sonar(pin);
+
+En donde le decimos a qué pin hemos conectado el sensor (en los siguientes programa utilizaremos el 5 y el 2), y la función nos devuelve la distancia al obstáculo en milímetros. Para montar sólo un sensor (primer programa) usaremos el pin 5, que está libre. Pero cuando queramos usar un segundo sensor deberemos soltar algún pin de los que tienen componentes soldados en la placa. Para eso tenemos los puentes, para desconectarlos. Podemos usar el pin 2 quitando el puente del Neopixel.
+
+Este [[https://github.com/felixstdp/SapoconchoXL/blob/main/ArduinoUNO/us_read.ino|código]] permite leer el sensor y mostrar el resultado por el monitor serie de Arduino para comprobar que funciona.
+
+TIP: 'long' es un nuevo tipo de variable, para números enteros muy grandes. el tipo 'int' sólo puede almacenar de -32768 a 32767.
+
+=== Mantener la distancia ===
+
+Con un sensor de distancia montado de forma central probaremos la distancia a una pared. Si estamos aún lejos, avanzaremos. Si estamos muy cerca, retrocederemos para mantener la distancia. Si en vez de una pared ponemos la mano, probaremos a manejar 'a distancia' nuestro robot.
+
+Debemos identificar muy bien los pines en los dos extremos del cable Dupont:
+
+  * VCC → rojo.
+  * GND → negro.
+  * Trig/Echo → azul.
+
+{{:proyectos:sapoconcho:bats4_19.jpg|bats4_19.jpg}}
+
+El código principal (al que añadiremos con las funciones drive y sonar) es el siguiente
+<code>
+
+void setup() {}
+
+void loop() {
+  long int distancia = sonar(5);
+  if (distancia<100)
+  {
+    drive(150,150,50);
+  }
+  else
+  {
+    drive(-150,-150,50);
+  }
+
+}
+
+</code>
+
+Como diversión si estamos trabajando en grupo podemos poner todos los robots en fila y encenderlos a la vez a ver qué pasa.
+
+=== Evitar obstáculos ===
+
+Con dos sensores de distancia podemos ver por donde está más cerca el obstáculo y girar hacia el lado contrario evitándolo.
+
+El código ahora es
+
+<code>
+void setup() {}
+
+void loop() {
+  long int izquierda = sonar(2);
+  long int derecha = sonar(5);
+  long int distancia = min(izquierda, derecha);
+  if (distancia<100)
+  {
+    if (izquierda<derecha) // cambiar menor por mayor si gira hacia el obstaculo
+    {
+      drive(150,-150,100);
+    }
+    else
+    {
+      drive(-150,150,100);
+    }
+  }
+  else
+  {
+    drive(150,150,50);
+  }
+
+}
+
+</code>
+
+==== Sensores de líneas ====
+
+Los sensores infrarrojos de líneas, tanto con salida analógica como digital utilizan tres pines: alimentación (V ), masa (G) y señal (S). Debes revisar tu sensor, cada fabricante coloca los pines como quiere, y no tiene por qué coincidir con la foto.
+
+{{:proyectos:tcrt5000r.jpg|tcrt5000r.jpg}}
+
+Utilizaremos sensores basados en reflexión TCRT5000 con regulador (importante) que se montarán en el chasis inferior y se cablean a 5v, GND y dos entradas analógicas entre A4 y A5 (con cables Dupond H-H de 15cm).
+
+{{:proyectos:foto_5-4-22_23_20_34.jpg|foto_5-4-22_23_20_34.jpg}}
+
+=== Seguir una línea ===
+
+Para leer los sensores no necesitamos una función extra, Arduino puede hacerlo con su propia analogRead(pin). El siguiente código lee los dos sensores y si uno de ellos está sobre la línea negra gira hacia el otro lado para evitarla (necesita la función drive).
+<code>
+
+void setup() {}
+
+void loop()
+{
+  if (analogRead(A4)<500) drive(-150,150,100);
+  if (analogRead(A5)<500) drive(150,-150,100);
+  drive(150,150,100);
+}
+
+</code>
+
+Los sensores tienen un regulador que debemos ajustar para que distingan bien cuando tienen delante un objeto blanco y uno negro.
+
+====== Equipo ======
+
+  * [[https://bricolabs.cc/wiki/user/felixstdp#proyectos|Félix]]
+  * [[https://bricolabs.cc/wiki/user/salvari|Sergio]]
+  * [[https://bricolabs.cc/wiki/user/manolomira|Manolo]]
+  * Dani
+
+====== Enlaces ======
+
+  * [[https://twitter.com/sapoconcho_bot|Sapoconcho en Twitter]]
+  * [[https://github.com/felixstdp/SapoconchoXL|SapoconchoXL en Github]]
+  * [[https://gitlab.com/felixstdp/SapoconchoXL|SapoconchoXL en Gitlab]]
+
+==== Pines para conectar los sensores ====
+
+La BATS original tenía componentes fijos (leds, botones, potenciómetros) para aprender a programar jugando. Aquí además de mantener esa función hemos añadido pines macho para que se le puedan usar más sensores o módulos externos. Para ello soldaremos líneas de pines a ambos lados de la placa. Utilizando pines de colores (rojo para alimentación positiva, negro para alimentación negativa o masa y un tercer color para la señal) será más fácil de identificar luego su función. Como dijimos no es imprescindible, pero si los usas fíjate en las fotos para hacerlo igual.
+
+Los pines tienen una parte corta y una larga. La que hay que pinchar y soldar es la corta.
+
+Entre el material necesario hay una tira de pines hembra para montar más adelante un zócalo. Ahora puedes usarla como soporte para las tiras de pines en su sitio mientras las sueldas.
+
+{{:proyectos:sapoconcho:bats4_8.jpg|bats4_8.jpg}}
+
+Hay tres sitios más donde hay tiras de pines, en este caso dos paralelas (3×2 pines) y una de dos pines. Servirán para conectar o desconectar a voluntad los componentes incluidos en la BATS. Para soldar los que van en línea doble 3×2 es más fácil unirlos con los puentes correspondientes (jumper). El de dos pines está al lado del LED Neopixel.
+
+{{:proyectos:319dc21b-b99e-4a6d-81ea-37375a3a74da.jpeg|319dc21b-b99e-4a6d-81ea-37375a3a74da.jpeg}}
+
+==== Pulsadores ====
+
+A continuación montaremos los dos pulsadores. Quizás es el componente más fácil porque se sujetan solos contra la placa y porque no es posible montarlos mal porque no encajarían. Si han entrado los pines está bien colocado. Seguro.
+
+{{:proyectos:bats4_14.jpg|bats4_14.jpg}}
+
+==== LEDs de colores ====
+
+Al revés que los pulsadores y las resistencias, **los LEDs sí tienen polaridad**. Es importante fijarse bien para montarlos correctamente y no equivocarse con las patas. Una forma es ver que una pata es más corta que la otra. Es la negativa, que va al agujero con huella cuadrada. Y otra es fijarse que la base no es exactamente redonda, sino que tiene un rebaje plano por un lado.
+
+{{:proyectos:bats:440px-led_5mm_green_en_.png}}
+
+En el dibujo de la PCB también aparece ese plano. Los lugares (tres en línea) donde hay que colocar los LEDs tienen dibujado un círculo con ese rebaje hacia abajo (si está mirando la placa de forma que lees bien las notas).
+
+Asegúrate de alinearlos y listo. Pincha el LED, abre las patas igual que las resistencias para que no se mueva y suelda los dos extremos. Después de revisar se puede cortar la patilla sobrante.
+
+{{:proyectos:sapoconcho:bats4_15.jpg|bats4_15.jpg}}
+
+==== LED RGB ====
+
+Este componente será capaz de producir luz de muchos colores por mezcla RGB (rojo, verde y azul). Tiene 4 patas y al igual que los de un solo color no es reversible, hay que revisar muy bien cual es la para negativa (GND), que se corresponde con una huella 'cuadrada' en la placa.
+
+{{:proyectos:sapoconcho:foto_21-12-22_18_45_58.jpg|foto_21-12-22_18_45_58.jpg}}
+
+Las patas están más juntas que en los otros componentes por lo que soldarlo sin que se unan todas las soldaduras no es sencillo. Hay que intentar usar poco estaño y si se unen retirar el estaño sobrante con una bomba de succión. Con un multímetro puede comprobarse si han quedado unidas o no.
+
+{{:proyectos:sapoconcho:foto_14-12-22_18_58_53.jpg|foto_14-12-22_18_58_53.jpg}}
+
+==== Zumbador ====
+
+Un zumbador es un pequeño altavoz muy cutre. Va montado en la esquina de arriba a la izquierda y como sucede con los LEDs hay que tener cuidado con la polaridad. Tanto el dispositivo como la placa tienen un signo + (más). Asegúrate de alinearlos. Como siempre se pincha por arriba y se suelda por abajo. Si te hace falta, de nuevo puedes separar un poco las patas para que no te se caiga.
+
+{{:proyectos:sapoconcho:bats4_16.jpg|bats4_16.jpg}}
+
+==== Potenciómetros ====
+
+Los siguientes componentes son dos potenciómetros giratorios. Tienen tres patas pequeñas de conexión y al igual que los pulsadores no es posible conectarlos mal. Si encaja está bien montado.
+
+{{:proyectos:sapoconcho:bats4_18.jpg|bats4_18.jpg}}
+
+==== Conectores de tornillo, condensadores de motores y fusibles PPTC ====
+
+Montaremos ahora los conectores de tornillo a donde llegarán los cables de los motores y de la alimentación. Los dos de motores pueden unirse, la pieza tiene una pequeña corredera para juntarlos.
+
+A continuación, para evitar ruido de los motores a la placa, al lado de los conectores de los motores van dos pequeños condensadores cerámicos. No tienen polaridad, así que de nuevo da igual cómo los pongas
+
+Por último, montaremos dos fusibles rearmables que sirven para proteger los circuitos. No tienen polaridad así que se montan como una resistencia.
+
+{{:proyectos:bats4_17.jpg|bats4_17.jpg}}
+
+==== Zócalos para el driver de motores y Bluetooth ====
+
+Con las tiras de pines hembra montaremos ahora el zócalo para el driver o controlador de motores. Deberemos cortar dos trozos de 8 pines y uno de 4. Para ello es más sencillo si contamos posiciones y quitamos con un alicate la parte metálica de la siguiente, que nos indicará dónde hacer el corte con un cutter, un alicate de corte y otra herramienta. Una vez cortado puede repasar el borde para que quede más estético.
+
+{{:proyectos:sapoconcho:bats4_10.jpg|bats4_10.jpg}}
+
+Hay que tener cuidado al montar las tiras de 8 pines, deben quedar bien rectas o el driver no encajará. Mejor soldar sólo un pin, comprobar que está bien y luego soldar el resto.
+
+La otra tira es el conector para un módulo de comunicación Bluetooth (o cualquier otro que use los pines de comunicación serie).
+
+{{:proyectos:c82a7ac3-c37d-47aa-8942-25c7821d5a0e.jpeg|c82a7ac3-c37d-47aa-8942-25c7821d5a0e.jpeg}}
+
+===== Montaje de los pines de la PCB =====
+
+Si hemos llegado a buen puerto la placa tiene montados los componentes y sólo es necesario ahora montarle los pines de conexión. Necesitaremos de longitud extralarga (a la izquierda en la foto).
+
+{{:proyectos:bats:img_0424.jpg|img_0424.jpg}}
+
+Los pines que conectan la BATS al Arduino son los únicos se sueldan por la parte de arriba. Al contrario que la conexión para el servomotor aquí será fácil la sujección. Corta las tiras de **pines ultralargos**  en cuatro trozos correspondiente con los lados del Arduino y pínchalos en él para utilizarlo como soporte.
+
+{{:proyectos:sapoconcho:5f245724-3f7a-4d14-80c4-1a242ef6ea58.jpeg|5f245724-3f7a-4d14-80c4-1a242ef6ea58.jpeg}}
+
+A continuación pincha por encima la BATs y ya puedes soldar todos los pines uno detrás de otro. Una buena práctica es soldar dos esquinas opuestas para que no se mueva.
+
+{{:proyectos:668b9d3c-0c0c-4b91-abee-36c9eec99e22.jpeg|668b9d3c-0c0c-4b91-abee-36c9eec99e22.jpeg}}
+
+Y con esto finaliza el montaje. Ya puedes pasar a la parte de programación. Puedes aprovechar para soldar la mini PCB del driver a sus pines (en el caso de que no la hayas comprado ya así). El procedimiento es el mismo: pincha las tiras de pines en el zócalo para usarlo de soporte, pon encima el driver y suelda los pines.
+
+====== Iniciación a la programación física con Arduino ======
+
+Un programa no es nada más que una lista de instrucciones ordenada. Para que Arduino la entienda debemos utilizar su propio lenguaje, que es el que iremos aprendiendo por medio de ejemplos y proyectos. Llamamos programación física a la que tiene como resultado una acción en el munto real como encender una luz o un motor.
+
+En esta parte del taller vamos a usar los componentes incluidos en la placa (leds, botones, pontenciómetros…) por lo que los puentes deben estar montados. Si en un montaje más adelante necesitas pines de Arduino libres, puedes quitar alguno.
+
+Los pines asignados en la BATS son los siguientes:
+
+  * 0-1: recepción y transmisión (RX/TX) en el zócalo Bluetooth.
+  * 2: LED Neopixel.
+  * 3-4: pulsadores.
+  * 5: sin conectar
+  * 6-9: control de motores.
+  * 10-12: LEDs de colores.
+  * 13: zumbador.
+  * A0: LDR.
+  * A1-A2: potenciómetros.
+  * A3-A5: sin conectar
+
+===== Proyecto 1. Salidas digitales =====
+
+==== Un mundo binario ====
+
+Una salida digital es una forma de comunicación binaria desde Arduino hacia el exterior. La llamamos binaria por que tiene sólo dos posibles estados: si/no, encendido/apagado, uno/cero. En el caso de un microcontrolador como Arduino esos estados significan que en un pin haya 5 voltios (estado HIGH) o cero voltios (LOW). Si en ese pin hemos conectado un led, cuando haya 5 voltios se encenderá.
+
+El programa de Arduino para encender un led tiene dos partes: en la primera le decimos que queremos usar un pin como salida digital (los pines pueden tener muchas funciones). En la segunda le decimos que lo encienda. Más adelante veremos además qué significa eso de //void loop() o setup()//. Puedes teclear el código o cortar y pegar. Las instrucciones deben acabar en punto y coma ;.
+<code>
+
+void setup()
+{
+  pinMode(10,OUTPUT); // vamos a usar el pin 10 como salida
+}
+
+void loop()
+{
+  digitalWrite(10,HIGH); // pone el pin 10 en estado 'alto', a 5 voltios
+}
+
+</code>
+
+**NOTA**: Para entender mejor los programas ponemos comentarios a las instrucciones. Todo lo que está después de dos barras es ignorado por Arduino.
+
+Después de escribir cualquier programa es necesario guardarlo y subirlo a la placa Arduino. Cuando subas el código si todo ha ido bien se habrá encendido un led verde o el que hayas soldado al pin 10. Por la forma en que está conectada la placa BATS al subir un programa oiremos un pitido. Eso es que todo va bien.
+
+==== Blink: el led parpadea ====
+
+El programa anterior tiene dos partes, y cada una encierra un grupo de instrucciones entre llaves {}.
+
+  * //void setup()//: estas tareas (instrucciones) se harán (ejecutarán) sólo una vez, cuando arrancamos o reiniciamos Arduino.
+  * //void loop()//: esas tareas se repetirán para siempre, cuando acabe la lista empezará por el principio otra vez.
+Vamos a aprovechar esto para probar a encender y apagar el led de antes indefinidamente
+
+<code>
+void setup() // esto se hará sólo una vez
+{
+  pinMode(10,OUTPUT); // vamos a usar el pin 10 como salida
+}
+
+void loop() // esto se va a repetir para siempre
+{
+  digitalWrite(10,HIGH); // pone el pin 10 en estado 'alto', a 5 voltios, y enciende el led
+  delay(500); // espera medio segundo (500 milisegundos) sin hacer nada
+  digitalWrite(10,LOW); // pone el pin 10 en estado 'bajo', y apaga el led
+  delay(500); // espera medio segundo sin hacer nada
+}
+
+</code>
+
+Ahora el led debería parpadear. Medio segundo encendido, medio segundo apagado y seguir así. Cambiando los valores de la instrucción //delay(milisegundos)//  podemos cambiar el ritmo.
+
+Arduino ya tiene este programa entre sus ejemplos como
+
+**Archivo>Ejemplos>01.Basics>Blink**
+
+Sólo hay que buscar en el programa 'LED_BUILTIN’ y en todos los sitios donde aparezca cambiarlo por un 12. O quizás decidas no cambiarlo, a ver qué sucede. La prueba y error es un método maker fundamental.
+
+==== Guardar números: Variables ====
+
+Supongamos que ahora queremos cambiar qué LED encendemos en el programa. El amarillo, por ejemplo, está conectado al pin 11. Podemos cambiar el 10 por 11 en todos los sitios del programa donde aparece. Pero si el programa es largo esto es un follón. Para esto (y muchas más cosas) usamos variables, que son nombres que guardan números y otros contenidos. Tendrán un nombre y un valor. Cada vez que cambiemos el valor se cambiará en todos los sitios donde aparezca la variable.
+
+<code>
+int led=10; // creamos una variable con nombre led y valor 10
+void setup()
+{
+  pinMode(led,OUTPUT); // vamos a usar el pin 'led' como salida
+}
+
+void loop()
+{
+  digitalWrite(led,HIGH); // pone el pin 'led' en estado 'alto', a 5 voltios, y enciende el led
+  delay(500); // espera medio segundo sin hacer nada
+  digitalWrite(led,LOW); // pone el pin 'led' en estado 'bajo', y apaga el led
+  delay(500); // espera medio segundo sin hacer nada
+}
+
+</code>
+
+Este programa nuevo funciona igual que el anterior, habiendo parpadear el led verde. Pero si ahora cambiamos la primera instrucción y le damos valor 11 en vez de 10 a la variable led, todas las instrucciones que viene después (el pin es de salida, encender e pin, apagar el pin) se harán sobre el pin 11 y el que parpadeará será el pin amarillo.
+
+==== Tarea 1: Mi primer semáforo, chispas ====
+
+Tenemos tres leds sencillos en total
+
+  * Un led verde en el pin 12.
+  * Un led amarillo en el pin 11.
+  * Un led rojos en el pin 10.
+
+Sabemos que los proyectos con semáforos acaban siendo odiados por lo mucho que se usan (o abusan), pero están bien para aprender. La tarea final de este proyecto es escribir un programa que encienda y apague las luces según un semáforo, de momento sin parpadear. Debe hacer lo típico:
+
+  * Encender el led verde 5 segundos.
+  * Encender el led amarillo 2 segundos.
+  * Encender el led rojo 5 segundos.
+
+El objetivo de la tarea es escribir código desde cero (en lugar de copiarlo y pegarlo) para fijar conceptos.
+
+===== Proyecto 2: Instrucciones repetidas en bucle =====
+
+==== Tengo un led amarillo, que es lo que parpadea ahora ====
+
+Al semáforo de la tarea del proyecto 1 le vamos a añadir una complicación para que sea más realista: la luz amarilla en lugar de estar encendida 2 segundos, ahora va a parpadear 4 veces. Entre las tareas de encender la luz verde y la roja, meteríamos unas nuevas así:
+
+<code>
+  digitalWrite(11,HIGH);
+  delay(250);
+  digitalWrite(11,LOW);
+  delay(250);
+  digitalWrite(11,HIGH);
+  delay(250);
+  digitalWrite(11,LOW);
+  delay(250);
+  digitalWrite(11,HIGH);
+  delay(250);
+  digitalWrite(11,LOW);
+  delay(250);
+  digitalWrite(11,HIGH);
+  delay(250);
+  digitalWrite(11,LOW);
+  delay(250);
+
+</code>
+
+Sin embargo viendo el código vemos que hay muchas instrucciones que se repiten continuamente. Si en vez de 4 veces fuesen muchas más esto ya no sería muy práctico. Tiene que haber una forma más simple de hacer esto.
+
+Para eso vamos a usar una nueva forma de dar instrucciones, una estructura de programación para repetir tareas. Existe en casi todos los lenguajes de programación y se llama bucle //for//. En su forma más simple puede verse abajo
+
+<code>
+void loop()
+{
+  for (int i=0; i<8; i=i+1) // esta tarea se repetirá 8 veces
+  {
+    digitalWrite(11,HIGH);
+    delay(250);
+    digitalWrite(11,LOW);
+    delay(250);
+  }
+}
+
+</code>
+
+La forma de escribir un bucle for tiene tres partes separadas por punto y coma:
+
+  * Definir una variable y una condición inicial: usaremos la variable i, con valor inicial cero.
+  * Definir la condición que indica cuándo terminar el bucle: se continuará mientras que i sea menor 8.
+  * Definir el cambio entre paso y paso del bucle: sumando 1 para que i vaya tomando los valores 0, 1, 2… y al llegar a 8 terminar.
+
+La tarea a repetir vendrá luego entre corchetes {}.
+
+**NOTA**: es bastante habitual usar la variable i por //índice//  pero podemos llamarla como queramos. O casi. No podemos usar nombres que ya tienen otro uso, como la propia palabra //for//.
+
+==== Ver cosas en la pantalla: el monitor serie ====
+
+Al contrario que cualquier ordenador al que estamos acostumbrados Arduino no tiene una pantalla en la que mostrarnos cosas, pero sí podemos usar una forma para mostrar lo que queramos en la pantalla del ordenador al que está conectado (mientras lo esté): el monitor serie.
+
+Para usarlo tenemos que meter una instrucción especial en el //setup()//  y cada vez que queramos mostrar -diremos imprimir en la pantalla- algo que puede ser un texto, un número…
+
+<code>
+void setup()
+{
+  Serial.begin(9600); // decimos a Arduino que vamos a usar el monitor serie
+}
+
+void loop()
+{
+  for (int i=0; i<10; i=i+1)
+  {
+    Serial.println(i); // "imprimimos" el valor de i por el monitor serie y saltamos de línea
+  }
+  delay(1000000); // ver TRUCO
+}
+
+</code>
+
+Una vez que carguemos el código debemos abrir el monitor serie, un icono con forma de lupa arriba a la derecha en Arduino o en el menú Herramientas>Monitor Serie.
+
+{{:proyectos:monitor_serie.jpg|monitor_serie.jpg}}
+
+**TRUCO**: Sabemos que Arduino está preparado para repetir todo lo que hay en void loop() (en este caso contar de 0 a 9). Si queremos que haga las cosas sólo una vez un truco posible es poner un delay muy largo al final.
+
+Este programa está pensado para probar valores diferentes de los iniciales (i=0), finales (i<10) y de salto (i=i+1) para experimentar qué pasa viendo el resultado en el monitor serie. En general el monitor nos servirá para ver en mitad de un programa qué está pasando.
+
+==== El semáforo realista ====
+
+Si sólo queremos que parpadee la luz amarilla podíamos haber hecho igual que en el Blink del proyecto 1, pero para meter esto dentro de un programa que hace más cosas ésta es la manera más simple. El programa completo ahora sería
+<code>
+
+void setup()
+{
+  pinMode(12,OUTPUT); // led verde
+  pinMode(11,OUTPUT); // led amarillo
+  pinMode(10,OUTPUT); // led rojo
+}
+
+void loop()
+{
+  digitalWrite(12,HIGH); // instrucciones para encender y apagar la luz verde
+  delay(5000);
+  digitalWrite(12,LOW);
+
+  for (int i=0; i<8; i=i+1) // esta tarea se repetirá 8 veces
+  {
+    digitalWrite(11,HIGH);
+    delay(250);
+    digitalWrite(11,LOW);
+    delay(250);
+  }
+
+  digitalWrite(10,HIGH); // instrucciones para encender y apagar la luz roja
+  delay(5000);
+  digitalWrite(10,LOW);
+}
+
+</code>
+
+==== Tarea 2: Las luces de feria ====
+
+Nuestras luces ya no son un semáforo, ahora son una feria. Escribir un programa para que parpadeen todos los leds (los verdes, amarillo y rojos) por turnos. El orden de parpadeo y la frecuencia son libres.
+
+Como bola extra, tratar de que parpadeen por grupos. El objetivo de la tarea y la bola extra es tratar de entender bien el orden en que se realizan las instrucciones.
+
+===== Proyecto 3: Salidas "analógicas" =====
+
+==== Donde dije digital, digo Diego ====
+
+//Tucho dixit//
+
+Los gallegos sabemos mejor que nadie que en esta vida no todo es blanco o negro, encendido o apagado y que a veces la mejor respuesta es depende. O no. Depende.
+
+Las salidas digitales tienen como posibles estados de Arduino 0 voltios y 5 voltios, pero entre 0 y 5 hay todo un mundo. Las salidas que pueden tener valores intermedios se llaman analógicas. En realidad Arduino hace un truco que se llama PWM ([[https://es.wikipedia.org/wiki/Modulaci%C3%B3n_por_ancho_de_pulsos|Pulse Width Modulation]]) que no es exactamente eso pero de momento nos vale como si lo fuera.
+
+A las salidas analógicas les daremos valores entre 0 (que corresponde a 0 voltios) y 255 (que corresponde a 5 voltios). Los valores intermedios encenderán a medias el led según una regla de tres.
+
+**NOTA**: no todos los pines de Arduino UNO pueden hacer esta función PWM. Están marcados en la placa con el símbolo ~, como el pin 11 del led amarillo. El 12 por ejemplo no la tiene.
+<code>
+
+int luminosidad = 0; // probaremos valores entre 0 y 255
+void setup()
+{
+  pinMode(10,OUTPUT); // vamos a usar el led rojo de la BATS
+}
+
+void loop()
+{
+  analogWrite(10,luminosidad); // poner el pin con el valor intermedio buscado
+}
+
+</code>
+
+Cambiando el valor de la variable luminosidad entre 0 y 255 veremos que el led se va encendiendo más o menos. Y podemos comprobar que no es muy proporcional. A partir de un valor de 50 ya brilla a tope. También podemos probar qué pasa si metemos un número más grande de 255.
+
+==== No me despiertes bruscamente ====
+
+Si quieremos hacer cambiar la luminosidad del led poco a poco podemos probar esto
+
+<code>
+void setup()
+{
+  pinMode(11,OUTPUT);
+}
+
+void loop()
+{
+  for (int i=0; i<60; i = i+10)
+  {
+    analogWrite(11,i);
+    delay(500);
+  }
+}
+
+</code>
+
+A diferencia del bucle que usábamos antes en la que la variable i se usaba sólo como contador para repetir muchas veces, ahora esa variable sirve para algo dentro del bucle, para definir la luminosidad. Con este programa, cada 500 milisegundos iremos subiendo la intensidad de luz hasta 50 y volverá a empezar de cero.
+
+La variable del bucle en este caso ya no sube de uno en uno, sino de 10 en 10 tomando valores i=0, 10, 20, 30, 40, 50.
+
+También podríamos empezar con un valor alto para la variable y reducirlo restando valores hasta llegar a un mínimo. El IDE de Arduino tiene un programa de ejemplo que hace algo parecido:
+
+**Archivo>Ejemplos>03.Analog>Fading**  (cambiar el pin del led de 9 a 11)
+
+==== Tarea 3: el driver de motores ====
+
+En el montaje de la shield hemos instalado un circuito controlador de motores. Está controlado por las salidas 6(PWM) y 7 para el motor izquierdo, y 8 y 9(PWM) para el motor derecho. El objetivo de la tarea es probar diferentes valores en los pines con números entre 0 y 255 para los PWM y únicamente HIGH/LOW para los demás. Recuerda declararlos como salidas en el //setup//. Ejemplo:
+
+<code>
+  digitalWrite(7,HIGH);
+  analogWrite(6,128);
+
+</code>
+
+===== Proyecto 4: Entradas digitales y analógicas =====
+
+==== Información desde el exterior ====
+
+Podemos interpretar las entradas de datos a Arduino como la información que tenemos del exterior por nuestros sentidos.
+
+{{:proyectos:gpio.png}}
+
+==== Pulsar un botón ====
+
+En el caso de las entradas digitales, la información será como lo visto para las salidas: si/no, encendido/apagado, uno/cero. Empezaremos con la más sencilla: un interruptor o un botón, que cuando lo pulsemos cambiará de estado. Como para las salidas, necesitamos declarar la función del pin antes de usarlo. En la shield tenemos los dos botones conectados a los pines 3 y 4. Para ver su estado, vamos a usar el monitor serie.
+
+<code>
+void setup()
+{
+  pinMode(3,INPUT); // vamos a usar el pin 3 como entrada
+  Serial.begin(9600); // decimos a Arduino que vamos a usar el monitor serie
+}
+
+void loop()
+{
+  int entrada = digitalRead(3);
+  Serial.println(entrada);
+  delay(10);
+}
+
+</code>
+
+Subiendo el código y abriendo el monitor serie podremos ver lo que sucede cuando pulsamos los botones. El IDE tiene un programa de ejemplo parecido
+
+**Archivo>Ejemplos>01.Basics>DigitalReadSerial**  (cambiar el pin digital 2 por el 3/4).
+
+==== Encender la luz ====
+
+Podemos unir la información de entrada con la de salida enlazando un botón con un led.
+
+<code>
+void setup()
+{
+  pinMode(3,INPUT); // pin 11 con un botón
+  pinMode(12, OUTPUT); // pin 2 con el led verde
+}
+
+void loop()
+{
+  int entrada = digitalRead(3);
+  digitalWrite(12,entrada);
+  delay(10);
+}
+
+</code>
+
+==== Entradas analógicas ====
+
+Arduino tiene varios pines con entradas que son capaces de medir un valor intermedio entre LOW (0 voltios) y HIGH (5 voltios). Para medir algunos parámetros (temperatura, distancia…) utilizaremos sensores que leeremos con una entrada analógica. La shield tiene dos resistencias variables (potenciómetros) que pueden simular una entrada analógica para ver cómo se usa.
+
+El IDE tiene un ejemplo que lee una entrada y muestra el resultado por el monitor serie.
+
+**Archivo>Ejemplos>01.Basics>AnalogReadSerial**: cambiar el pin A0 por el A1/A2.
+
+Una vez subido el programa y abierto el monitor serie giraremos el potenciómetro para ver el resultado. El número que muestra el monitor serie será 0 en un extremo, 1023 en el otro y un valor proporcional para valores intermedios.
+
+==== Tipos de variables ====
+
+Hasta ahora hemos definido variables con un nombre, y les hemos puesto por delante la coletilla 'int' pero sin explicar qué significa eso. Cuando creamos una variable tenemos que decirle a Arduino qué tipo de números -y otras cosas que no lo son- va a almacenar. Veremos ahora los tipos más comunes:
+
+  - 'int': en las variables //integer//  almacenaremos números enteros. Positivos o negativos, pero sin decimales.
+  - 'float': en las variables //floating point//  almacenaremos números reales. Positivos o negativos, con decimales.
+
+Cuando leemos una entrada analógica, obtenemos un número entero entre 0 y 1023, que se corresponde con una tensión en voltios de 0 a 5 según una regla de tres. El programa de ejemplo
+
+**Archivo>Ejemplos>01.Basics>ReadAnalogVoltage**
+
+lee el valor en una entrada (entero) y lo convierte en un número real de 0 a 5 con los decimales que correspondan.
+
+Otro tipo de variable común es 'boolean', que es una condición y sólo puede tener valores 'TRUE' o 'FALSE', o bien 1 y 0.
+
+==== Tarea 4: Regular la luz ====
+
+Leer una entrada (de uno de los dos potenciómetros) y en proporción a ella encender un led de forma variable.
+
+===== Proyecto 5: Tareas condicionadas =====
+
+==== Sentencia if-then ====
+
+Con mucha frecuencia querremos que nuestro programa haga una determinada tarea, pero sólo si se cumple una condición. La forma de hacerlo es con una sentencia if-then (si-entonces). La forma básica es con la instrucción if, después la condición entre paréntesis () y la lista de tareas entre corchetes {}.
+
+<code>
+if (condición)
+{
+  // tareas a realizar si se cumple la condición
+}
+
+</code>
+
+Una forma más completa es tener una tarea alternativa si la condición no se cumple.
+
+<code>
+if (condición)
+{
+  // tareas a realizar si se cumple la condición
+}
+else
+{
+  // tareas a realizar si NO se cumple la condición
+}
+
+</code>
+
+La condición será una expresión matemática (igual, mayor, menor…). El programa anterior que enlazaba el botón con el led puede hacerse también de este modo
+
+<code>
+void setup()
+{
+  pinMode(3,INPUT); // pin 3 con un botón
+  pinMode(12, OUTPUT); // pin 12 con el led verde
+}
+
+void loop()
+{
+  int entrada = digitalRead(3);
+  if (entrada == 1) // la comparación de igualdad de dos números se escribe con un símbolo doble ==
+  {
+    digitalWrite(12,HIGH);
+  }
+  else
+  {
+    digitalWrite(12,LOW);
+  }
+  delay(10);
+}
+
+</code>
+
+El IDE tiene un ejemplo de if-then que conecta un potenciómetro con un led
+
+**Arduino>Ejemplos>05.Control>IfStatementConditional**: cambiar el analogPin por A1 y el ledPin por 10/11. Probar diferentes valores el umbral (threshold) y girar el potenciómetro.
+
+==== Variables de estado ====
+
+Vamos a definir ahora un estado del sistema con una variable que vamos a llamar 'encendido', y que podrá tener valores 0 y 1. El cambio de un estado a otro se hará con los botones del pin 3 y el 4. Y el resultado de estar encendido será el led verde y el apagado el led rojo.
+
+<code>
+int encendido = 0;
+
+void setup()
+{
+  pinMode(3,INPUT); // pin 3 con un botón
+  pinMode(4,INPUT); // pin 4 con un botón
+
+  pinMode(12, OUTPUT); // pin 12 con el led verde
+  pinMode(10, OUTPUT); // pin 10 con el led rojo
+
+}
+
+void loop()
+{
+  if (encendido == 0)
+  {
+    encendido = digitalRead(3); // si el sistema está apagado y se pulsa el botón verde, pasa a encendido
+  }
+  if (encendido == 1)
+  {
+    encendido = !digitalRead(4); // si el sistema está encendido y se pulsa el botón rojo, pasa de apagado. El símbolo ! indica que intercambiamos los valores 0 y 1.
+  }
+  digitalWrite(12,encendido);
+  digitalWrite(10,!encendido);
+  delay(10);
+}
+
+</code>
+
+Este programa con una variable de estado es el ejemplo más sencillo de un autómata de estados finitos (en inglés Finite State Machine). Parece un programa sencillo, pero añadido a los programas de movimiento del robot nos permitirá pararlo o volver a ponerlo en marcha en cualquier momento.
+
+==== Tarea 5: luces autónomas ====
+
+En el pin A0 de la BATS hay conectado un sensor de luz. El programa debe leer la información, y si la luz no es suficiente (establecer un umbral) se debe encender una luz led. Así es como funcionan algunas farolas.
+
+===== Proyecto 6: Librerías de funciones =====
+
+A mayores de las funciones básicas de Arduino, podemos añadir funciones extra por medio de librerías. El programa deberá comenzar con una instrucción #include para añadir la librería correspondiente en el menú Programa>Incluir librería. Esa librería deberá estar en el IDE de Arduino. Si no la tienes deberás buscar cómo instalarla. Las diferentes versiones del IDE lo hacen cada una a su modo.
+
+Ahora vamos a utilizar una librería de Adafruit para usar el led RGB Neopixel. Cada librería tiene su lista de instrucciones, deberás buscarlas del programador/fabricante correspondiente.
+
+<code>
+#include <Adafruit_NeoPixel.h> // incluye en el programa la librería
+
+int PIN=2;  // Define el pin en el que está conectado el Neopixel
+int NUMPIXELS=1;   // Define el número de leds neopixel encadenados
+Adafruit_NeoPixel pixel = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800); // crea el objeto pixel
+
+void setup() {
+  pixel.begin(); // Inicializa la libreria NeoPixel.
+}
+
+void loop() {
+    pixel.setPixelColor(0, pixel.Color(0,255,0)); // Asigna el color con valores Green-Red-Blue entre 0 y 255
+    pixel.show(); // Actualiza los leds.
+    delay(500);
+}
+
+</code>
+
+(*) Esta parte de la wiki se la tenemos que agradecer al proyecto [[https://tecnoloxia.org/mclon/extras-ide/luces-de-cores-ide/|mClon]].
+
+==== Tarea 6: Librería para el sensor de ultrasonidos y el zumbador ====
+
+Existe una librería que se llama NewPing para utilizar los sensores de ultrasonidos. La tarea es buscarla, instalarla y hacer un programa para leer el sensor y sacar la salida por el monitor serie.
+
+También puedes mirar en la web [[https://programarfacil.com/blog/arduino-blog/buzzer-con-arduino-zumbador/|Programar es fácil]] para usar el zumbador con la librería EasyBuzzer.
+
+===== Proyecto 7. Compartir programas =====
+
+==== Hardware y software abiertos ====
+
+Si estás leyendo esto es en parte porque en Bricolabs estamos comprometidos con compartir el conocimiento. Hay muchas formas de hacer esto como documentar cómo has diseñado una placa, escribir una wiki o hacer talleres. Nosotros estamos convencidos y comprometidos con el hardware libre como Arduino o la propia BATS y con el software libre como Arduino -de nuevo-, GNU/Linux y los programas que ves aquí.
+
+==== Github ====
+
+Hay muchas maneras de compartir programas, pero ahora son mucho más cómodas que los tiempos de copiar cintas casete. La plataforma que usamos para casi todo es Github, una web donde puedes abrirte una cuenta para almacenar tus programas en la nube. Si compartes tus programas en una cuenta pública, además es gratuita. Todo el proyecto BATS está en [[https://github.com/brico-labs/BATS|Github]] excepto esta wiki.
+
+{{:proyectos:github.png}}
+
+==== Tarea 7: Probar programas de Github ====
+
+Entra en la carpeta de [[https://github.com/brico-labs/BATS/tree/master/V4|software]] del proyecto BATS V4 en Github y prueba algún programa en tu Arduino con BATS. Una manera sencilla es cortar y pegar el programa a la ventana de Arduino.
+
+El objetivo de esta tarea es empezar a conocer Github y usar programas ajenos.
+
+Bola extra: crea una cuenta para tí en Github, crea un repositorio y dentro de él un archivo con algún programa tuyo. No olvides que la carpeta sea pública.
+
+====== Montaje del chasis ======
+
+A continuación montaremos el chasis diseñado para montar un Arduino UNO con una shield. Aunque en realidad podrías usar la BATS con cualquier otro de 2 ó 4 ruedas.
+
+===== Piezas imprimibles =====
+
+El chasis de Sapoconcho XL consta de las siguientes piezas:
+
+  * Bases superior e inferior.
+  * Soporte de motores (1 unidad).
+  * Pilares de unión (o separación) de las dos bases (4 unidades). Pueden usarse en su lugar separadores de circuitos de 30mm.
+  * Ruedas (2 unidades).
+  * Soporte de sensores de ultrasonidos (1 ó 2 unidades).
+
+En una impresora típica de 200x200mm se pueden imprimir todas las piezas en dos tandas.
+
+{{:proyectos:prusa_sapoconcho.jpg|prusa_sapoconcho.jpg}}
+
+Todas las piezas están en este [[https://github.com/felixstdp/SapoconchoXL/tree/main/3D_print|repositorio]] de Github. Ahí puedes encontrar los archivos originales de OpenSCAD para modificarlos a tu gusto o los STL para imprimir directamente.
+
+===== Montaje mecánico =====
+
+El chasis base tiene pocas piezas y el montaje es muy sencillo.
+
+{{:proyectos:chasis_base.png}}
+
+**Paso 1**: Los motores amarillos se unirán al soporte con 4 tornillos M3x30.
+
+{{:proyectos:foto_5-4-22_22_25_45.jpg|foto_5-4-22_22_25_45.jpg}}
+
+**Paso 2**: Unir la base inferior al soporte con dos tornillos M3x10. También se puede poner ahora la bola loca o 'ballcaster', el tercer punto de apoyo.
+
+{{:proyectos:foto_5-4-22_22_28_43.jpg|foto_5-4-22_22_28_43.jpg}}
+
+**Paso 3**: Montar los 4 pilares a la base inferior con 4 tornillos M3x10. En algunos casos los tornillos entran muy duros, tendrás que sujetar el pilar con unos alicates o poner a la vez los tornillos de los dos lados con dos llaves allen.
+
+{{:proyectos:foto_5-4-22_22_34_04.jpg|foto_5-4-22_22_34_04.jpg}}
+
+**Paso 4**: Montar la base superior a los pilares con otros 4 tornillos M3x10. Ojo a la orientación en la foto.
+
+{{:proyectos:montaje_4.jpg|montaje_4.jpg}}
+
+**Paso 5**: Colocar las ruedas -cada una con su 'neumático'-, montar el Arduino UNO con tornillos M3x6 (dos en diagonal son suficientes) y pinchar la Shield sobre él (en la foto se ve una distinta, debes montar la BATS).
+
+{{:proyectos:montaje_5.jpg|montaje_5.jpg}}
+
+Hay también la opción de montar motores tipo N20, cambiando el soporte y las ruedas.
+
+{{:proyectos:soporte_n20.png}}
+
+===== Driver y conexionado de motores =====
+
+Arduino no puede operar directamente un motor. Necesita un intermediario o [[https://bricolabs.cc/wiki/guias/control_de_motores|driver]]. Existen dos drivers de motores muy parecidos y válidos para Sapoconcho XL: el Toshiba TB6612 y el DRV8833. Aunque los pines no son iguales, el cableado y la programación hacen que sean intercambiables.
+
+En cada motor debemos conectar dos cables de unos 10cm. Un extremo soldado a los terminales de cobre (ojo, son frágiles) y el otro pelado y con estaño para conectar a la placa con los enganches de tornillo. Puede ser una buena idea una vez soldados los cables de los motores sujetarlos con una mini brida para evitar tirones y que se rompan.
+
+{{:proyectos:sapoconcho:bats4_19.jpg|bats4_19.jpg}}
+
+La shield tiene un zócalo para montar cualquiera de los dos drivers y cuatro conectores para los cables de los motores. Si al probar las funciones de movimiento alguna rueda gira al revés, hay que intercambiar los cables de ese motor.
+
+===== Alimentación =====
+
+Para alimentación utilizaremos un portapilas para 4 pilas AA. Y para que valga para cualquier proyecto, puedas usar pilas recargables y reduzcamos la contaminación añadiremos siempre un [[https://es.wikipedia.org/wiki/Convertidor_reductor-elevador|regulador dc-dc]] elevador para elevar la tensión de salida (step-up). El LM2587 y el XL6009 valen y tienen un tornillo para regular la tensión de salida; un buen valor es 7,5v.
+
+{{:proyectos:bats4_20.jpg|bats4_20.jpg}}
+
+Las conexiones del step-up son muy sencillas:
+
+  * Entrada negativa (IN-): la soldaremos al negativo -negro- del portapilas.
+  * Entrada positiva (IN+): la soldaremos a un cable rojo de unos 6 centímetros, el otro extremo lo dejaremos pelado y con estaño.
+  * Cable positivo -rojo- del portapilas: lo cortaremos a unos 6 centímetros y lo dejaremos con el extremo pelado y con estaño.
+  * Salidas positiva y negativa (OUT+/-): las conectaremos con un cable doble de unos 8 centímetros al conector de alimentación del Arduino.
+
+Si hemos hecho bien esas conexiones ahora sólo queda atornillar el cable positivo del portapilas y de la entrada del step-up al conector de la esquina. El del portapilas debe ir al extremo más esquinado.
+
+{{:proyectos:bats4_21.jpg|bats4_21.jpg}}
+
+====== Programación de Sapoconcho ======
+
+===== Funciones en Arduino =====
+
+Cuando repetimos una tarea (un conjunto de instrucciones) con frecuencia, podemos enlatarlas en una función. Las funciones tendrán un nombre y un grupo de tareas entre corchetes {}. También pueden tener valores de entrada y salida, pero eso lo veremos más adelante con ejemplos.
+
+Para el caso de la luz parpadeante del semáforo, podemos crear la siguiente función:
+<code>
+
+void blink()
+{
+  for (int i=0; i<8; i=i+1) // esta tarea se repetirá 8 veces
+  {
+    digitalWrite(12,HIGH);
+    delay(250);
+    digitalWrite(12,LOW);
+    delay(250);
+  }
+}
+
+</code>
+
+Una vez que hemos definido la tarea, cada vez que la llamemos por su nombre //blink()//, se ejecutarán las tareas que hemos escrito. De ese modo si se van a hacer varias veces a lo largo del programa, no necesitamos escribir cada vez todo el código. El código de las funciones puede estar en cualquier parte del programa, pero suele ponerse al final de todo, aparte del programa principal. También puede ponerse en una pestaña aparte en el IDE.
+
+===== Función de movimiento básica =====
+
+Para programar el Arduino con código escrito puedes utilizar la función de movimiento siguiente (copia y pega el código en el IDE).
+
+El código tiene tres partes:
+
+  * En la primera -setup- se incluye la parte del programa que se ejecuta sólo una vez, al iniciar el Arduino.
+  * En la segunda -loop- es donde después escribirás el programa principal, que se ejecutará en bucle.
+  * En la tercera -drive- es donde se define la función (o subrutina) de movimiento para simplificar el programa principal.
+
+La función drive incluye la numeración y configuración de pines. Puede ponerse en una pestaña aparte en el IDE de Arduino, eso hará que el código principal con el setup y el loop se lea más fácil.
+
+<code>
+void setup() {
+
+}
+
+//programa principal
+void loop(){
+
+}
+
+//función de movimiento de motores
+void drive(int L, int R, int t) //velocidad de las ruedas izquierda y derecha, positivo hacia delante, tiempo en milisegundos
+{
+//Arduino UNO y driver TB6612/DRV8833
+  const int AIN2 = 9; // PWMA
+  const int AIN1 = 8;
+  const int BIN1 = 7;
+  const int BIN2 = 6; // PWMB
+
+//iniciar el modo de los pines para los motores
+  pinMode(AIN1,OUTPUT);
+  pinMode(AIN2,OUTPUT);
+  pinMode(BIN1,OUTPUT);
+  pinMode(BIN2,OUTPUT);
+
+// evitar valores no válidos para el PWM
+  L=constrain(L,-255,255);
+  R=constrain(R,-255,255);
+
+// poner valores a los pines
+  digitalWrite(AIN1, L<0);
+  analogWrite(AIN2, L+255*(L<0));
+  digitalWrite(BIN1, R<0);
+  analogWrite(BIN2, R+255*(R<0));
+
+  delay(t);
+}
+
+</code>
+
+==== Movimientos de prueba ====
+
+El uso de la función drive es sencillo. Se llama como **drive (velocidad rueda izquierda, velocidad rueda derecha, tiempo)**  Las velocidades pueden estar entre -255 y 255. Positivo hacia delante, negativo hacia atrás. El tiempo en milisegundos.
+
+Hay cinco **funciones básicas**:
+
+  * Movimiento hacia adelante: drive(200,200,1000); probar a cambiar los valores de velocidad y tiempo.
+  * Movimiento hacia atrás: drive(-200,-200,1000);
+  * Giro en redondo: drive(-200,200,1000); probar hacia donde gira.
+  * Giro hacia el lado contrario: drive(200,-200,1000);
+  * Parar: drive(0,0,0);
+
+La última es importante. Si no la incluimos después de cualquiera de las otras, el robot no parará.
+
+{{:guias:guias:pid:differential-steering-tutorials-42bots2.png}}
+
+El primer ejercicio puede ser ajustar los valores de movimiento hacia adelante para que se mueva en línea recta. Es poco probable que con dos valores iguales lo haga, los motores no son idénticos.
+
+El segundo ejercicio puede ser ajustar los valores de movimiento de giro para que rote un ángulo fijado, por ejemplo 90 grados o 180 grados.
+
+El tercer ejercicio puede ser encadenar órdenes para hacer figuras, por ejemplo un cuadrado, una estrella…
+
+**Ejercicios más complejos**:
+
+La función drive con dos valores positivos pero diferentes describe un arco. Probar a encadenar arcos para hacer un movimiento en eses. Probar a poner obstáculos y salvarlos serpenteando.
+
+===== Montaje de los sensores y movimientos autónomos =====
+
+Los sensores tienen casi siempre dos pines de alimentación (positivo y negativo) y uno o más pines de datos. Para eso hemos puesto en los laterales de la placa los pines de Arduino junto con las líneas de alimentación positiva (roja) y negativa o masa (negra).
+
+==== Sensores de ultrasonidos ====
+
+Los sensores del ultrasonidos HC-SR04 tienen cuatro pines: alimentación (VCC), masa (GND), trigger y echo. Estos dos últimos los unimos con una soldadura para ahorrarnos un cable, aunque tenemos que advertir que algunos modelos de algunos fabricantes no permiten esto, y al hacerlo no funcionan. Cablearemos con Dupont hembra-hembra de tres hilos de los pines sensor a la shield.
+
+{{:proyectos:hc-sr04_c.jpg|hc-sr04_c.jpg}}
+
+El montaje del soporte a la placa superior es sencillo, con un tornillo M3x10 y una tuerca. La placa tiene tres orificios, usaremos el central para montar un único sensor o los laterales para montar dos.
+
+{{:proyectos:montaje_us.jpg|montaje_us.jpg}}
+
+Para leer la distancia que mide el sensor usaremos una nueva función, que de nuevo podemos guardar en una pestaña nueva en el IDE para dejar más limpio el programa principal
+<code>
+
+long sonar(int trig)
+{
+  pinMode(trig, OUTPUT);
+  digitalWrite(trig,LOW); // trigger envia un pulso ultrasónico
+  delayMicroseconds(5);
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(10);
+  pinMode(trig, INPUT);
+  unsigned long tiempo=pulseIn(trig, HIGH);    // echo espera a recibir la respuesta
+  unsigned long distancia= int(0.17*tiempo);  // fórmula para calcular la distancia
+  return distancia;
+}
+
+</code>
+
+El uso es sencillo, la llamamos como
+
+long distancia = sonar(pin);
+
+En donde le decimos a qué pin hemos conectado el sensor (en los siguientes programa utilizaremos el 5 y el 2), y la función nos devuelve la distancia al obstáculo en milímetros. Para montar sólo un sensor (primer programa) usaremos el pin 5, que está libre. Pero cuando queramos usar un segundo sensor deberemos soltar algún pin de los que tienen componentes soldados en la placa. Para eso tenemos los puentes, para desconectarlos. Podemos usar el pin 2 quitando el puente del Neopixel.
+
+Este [[https://github.com/felixstdp/SapoconchoXL/blob/main/ArduinoUNO/us_read.ino|código]] permite leer el sensor y mostrar el resultado por el monitor serie de Arduino para comprobar que funciona.
+
+TIP: 'long' es un nuevo tipo de variable, para números enteros muy grandes. el tipo 'int' sólo puede almacenar de -32768 a 32767.
+
+=== Mantener la distancia ===
+
+Con un sensor de distancia montado de forma central probaremos la distancia a una pared. Si estamos aún lejos, avanzaremos. Si estamos muy cerca, retrocederemos para mantener la distancia. Si en vez de una pared ponemos la mano, probaremos a manejar 'a distancia' nuestro robot.
+
+Debemos identificar muy bien los pines en los dos extremos del cable Dupont:
+
+  * VCC → rojo.
+  * GND → negro.
+  * Trig/Echo → azul.
+
+{{:proyectos:sapoconcho:bats4_19.jpg|bats4_19.jpg}}
+
+El código principal (al que añadiremos con las funciones drive y sonar) es el siguiente
+<code>
+
+void setup() {}
+
+void loop() {
+  long int distancia = sonar(5);
+  if (distancia<100)
+  {
+    drive(150,150,50);
+  }
+  else
+  {
+    drive(-150,-150,50);
+  }
+
+}
+
+</code>
+
+Como diversión si estamos trabajando en grupo podemos poner todos los robots en fila y encenderlos a la vez a ver qué pasa.
+
+=== Evitar obstáculos ===
+
+Con dos sensores de distancia podemos ver por donde está más cerca el obstáculo y girar hacia el lado contrario evitándolo.
+
+El código ahora es
+
+<code>
+void setup() {}
+
+void loop() {
+  long int izquierda = sonar(2);
+  long int derecha = sonar(5);
+  long int distancia = min(izquierda, derecha);
+  if (distancia<100)
+  {
+    if (izquierda<derecha) // cambiar menor por mayor si gira hacia el obstaculo
+    {
+      drive(150,-150,100);
+    }
+    else
+    {
+      drive(-150,150,100);
+    }
+  }
+  else
+  {
+    drive(150,150,50);
+  }
+
+}
+
+</code>
+
+==== Sensores de líneas ====
+
+Los sensores infrarrojos de líneas, tanto con salida analógica como digital utilizan tres pines: alimentación (V+), masa (G) y señal (S). Debes revisar tu sensor, cada fabricante coloca los pines como quiere, y no tiene por qué coincidir con la foto.
+
+{{:proyectos:tcrt5000r.jpg|tcrt5000r.jpg}}
+
+Utilizaremos sensores basados en reflexión TCRT5000 con regulador (importante) que se montarán en el chasis inferior y se cablean a 5v, GND y dos entradas analógicas entre A4 y A5 (con cables Dupond H-H de 15cm).
+
+{{:proyectos:foto_5-4-22_23_20_34.jpg|foto_5-4-22_23_20_34.jpg}}
+
+=== Seguir una línea ===
+
+Para leer los sensores no necesitamos una función extra, Arduino puede hacerlo con su propia analogRead(pin). El siguiente código lee los dos sensores y si uno de ellos está sobre la línea negra gira hacia el otro lado para evitarla (necesita la función drive).
+<code>
+
+void setup() {}
+
+void loop()
+{
+  if (analogRead(A4)<500) drive(-150,150,100);
+  if (analogRead(A5)<500) drive(150,-150,100);
+  drive(150,150,100);
+}
+
+</code>
+
+Los sensores tienen un regulador que debemos ajustar para que distingan bien cuando tienen delante un objeto blanco y uno negro.
+
+====== Equipo ======
+
+  * [[https://bricolabs.cc/wiki/user/felixstdp#proyectos|Félix]]
+  * [[https://bricolabs.cc/wiki/user/salvari|Sergio]]
+  * [[https://bricolabs.cc/wiki/user/manolomira|Manolo]]
+  * Dani
+
+====== Enlaces ======
+
+  * [[https://twitter.com/sapoconcho_bot|Sapoconcho en Twitter]]
+  * [[https://github.com/felixstdp/SapoconchoXL|SapoconchoXL en Github]]
+  * [[https://gitlab.com/felixstdp/SapoconchoXL|SapoconchoXL en Gitlab]]
+
