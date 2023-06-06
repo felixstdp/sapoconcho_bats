@@ -16,12 +16,12 @@
 
 #define vel 50
 #define paso 12
-#define kp .01
-#define ki 0.1
 
 int giro = 0;
 int i = 0;
 int p = 0;
+float kp = 0.1;
+float ki = 0.1;
 
 // esta parte se ejecutara solo una vez al principio
 void setup() {
@@ -31,11 +31,17 @@ void setup() {
 // esta parte se repetira en bucle para siempre
 void loop()
 {
-  p = analogRead(A4) - analogRead(A5);
+  kp = (float)analogRead(POT1)/5000;
+  ki = (float)analogRead(POT2)/5000;
+  Serial.print(kp);
+  Serial.print(" ");
+  Serial.println(ki);
+  p = analogRead(A4)/10 - analogRead(A5)/10;
+  //Serial.println(p);
   i += p;
   if (i*p < 0) i=0;
   giro = kp*p + ki*i;
-  Serial.println(giro);
+  //Serial.println(giro);
   drive(vel-giro, vel+giro, paso);
 }
 
