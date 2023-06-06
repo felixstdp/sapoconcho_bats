@@ -20,6 +20,8 @@ intersection(){
 translate([0,0,-1])cylinder(d=3,h=12);
 translate([-1.5,-1,-1])cube([3,3,12]);
 }
+translate([0,0,7])rotate([90,0,0])
+    cylinder(d=3.5,h=30);
 }
 difference(){
 cylinder(d=13,h=10);
@@ -29,5 +31,5 @@ translate([0,0,-1])cylinder(d=3,h=12);
 translate([-1.5,-1,-1])cube([3,3,12]);
 }
 translate([0,0,7])rotate([90,0,0])
-    cylinder(d=1.9,h=10);
+    cylinder(d=2.5,h=10);
 }
